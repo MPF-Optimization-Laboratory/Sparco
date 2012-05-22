@@ -1,0 +1,41 @@
+#!/bin/bash
+# $Id: package 827 2008-03-25 19:53:54Z mpf $
+
+VER="-1.1.3" # typically, set to "-1.0"
+PREFIX="sparco${VER}"
+SRC=${PWD}
+
+
+cd ..
+rm  -f ${PREFIX}.tgz
+tar --exclude=.svn* \
+    --exclude=auto \
+    --exclude=documentation \
+    --exclude=solutions \
+    --exclude=build/figures/* \
+    --exclude=build/thumbs/* \
+    --exclude=build/html/* \
+    --exclude=build/latex/* \
+    --exclude=tools/development \
+    --exclude=*~  \
+    --exclude=TODO \
+    --exclude=package \
+    -zcvf ${PREFIX}.tgz  ${PREFIX}
+
+rm  -f ${PREFIX}.zip
+zip -r ${PREFIX}.zip  ${PREFIX} \
+    -x *.svn* \
+    -x *auto* \
+    -x *documentation* \
+    -x *solutions* \
+    -x *build/figures/*.* \
+    -x *build/thumbs/*.* \
+    -x *build/html/*.* \
+    -x *build/html/bibkeys \
+    -x *build/latex/*.* \
+    -x *tools/development* \
+    -x *~ \
+    -x *TODO \
+    -x *package
+
+cd ${SRC}

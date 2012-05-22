@@ -1,0 +1,102 @@
+$Id: TODO 1485 2009-09-09 03:41:37Z ewout78 $
+
+DONE: Modified tools and examples according to classOp
+
+In the problems we use opFFT. Is this the analysis or synthesis operator?
+If it is the synthesis, should we use its adjoint instead? L1-magic seems
+to convert the Shepp-Logan phantom using fft2.
+
+- Update the website, split two parts of Sparco.
+- Exclude the .bib file in the distribution
+- Include .bib information, with citation keys
+
+
+Sparco Operators
+----------------
+
+- Contributions and suggestions are welcome
+- Document operators and problems
+- Example tool
+
+- Change opClass to SparcoOp
+- Add methods to the class:
+      * Matrices of operators
+      * Find?
+      * Subset indexing
+- Printing of opBlockDiag, simplify if possible
+- Do we want to keep counters / See if properties of
+  class works for counter, op.counter / Fix bug
+
+- Flip curvelet and surfacelet modes
+
+- Output of webpages / operators
+
+- opHaar(16) does not work
+
+
+
+Sparco Problem Set
+------------------
+- Add problem for restricted DCT
+- PROB002: Why is this problem still marked as PRELIMINARY!?
+- Add problems given by Rayan
+- Make parsing of the parameters faster (Sparco problems)
+- tools/opDifference, this 'operator' remains a function
+- Combine problems 9 and 10, with a single option to normalize
+  the Heaviside matrix. 
+
+
+
+Organization
+------------
+- Move all tools, etc, to a top-level private dir.
+  For example, the rwt directory shouldn't clash
+  with another RTW toolbox that the user already
+  has installed.
+
+
+Problem specific:
+---------------------------------------------------------------------
+- Problem xx: Add noise
+- Problem 28: Parameters, default settings (smooth = difficult), add noise?
+- Problem 62: Generalize generateAngiogram() function?
+- Problem 63: Add sparsity basis, although not used in TV
+
+
+Operators:
+---------------------------------------------------------------------
+- Implement non-uniform FFT operator based on nufft; implement
+  Spiral FFT, or do not implement non-uniform FFT.
+- Implement standard methods.
+- Rename 'classOp' to 'sparcoOp'
+
+Meeting:
+---------------------------------------------------------------------
+- Choose appropriate default settings for each problem
+- Ensure validity of all problems
+- Add historical problems from the basis pursuit paper?
+- Numbering; 100, 200, etc?
+
+
+% --- CONFIGURATION --------------------------------------------------
+- Matlab requirement 7 and higher
+- Curvelet does not work under Windows
+- Move literature.bib to the documentation directory?
+- Do we distribute the documentation directory?
+- generateHTML: Output problems.html, operators.html, probXXX.html,
+  let the main page (generated manually) link to those.
+
+
+Adding new operators/problems
+-----------------------------
+- Dot test for operators
+- Add "submitted-by" in info?
+- Add "files" in info? (package each problem for website)
+
+
+Papers that actually *use* Sparco
+---------------------------------
+- Fast greedy algorithms for large sparse inverse problems, Thomas
+Blumensath and Mike E. Davies
+http://www.see.ed.ac.uk/~tblumens/papers/BDEUSIPCO08_2.pdf
+
