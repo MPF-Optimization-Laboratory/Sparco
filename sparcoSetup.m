@@ -102,44 +102,53 @@ end
 % ----------------------------------------------------------------------
 
 fprintf('Trying to find Spot toolbox...\n');
-fprintf('Spot not found.\n');
-fprintf('Downloading Spot...\n');
-spotwebsite = 'http://www.cs.ubc.ca/labs/scl/spot/';
-website = urlread(spotwebsite);
-dl = strfind(website, 'Download');
-website = website(dl(1):size(website,2));
-spotURL = strfind(website, '<a href="');
-website = website((spotURL(1)+9):size(website,2));
-endofURL = strfind(website,'"');
-website = website(1:(endofURL-1));
 
-if(isempty(strfind(website,'www'))&&isempty(strfind(website,'http')))
-    website = strcat(spotwebsite,website);
-end
-[path,status] = urlwrite(website,'spot.zip');
+isspot = strfind(ls('+sparco'),'+spotbox');
 
-if(status==0)
-    warning('Could not download Spot toolbox from website\n');
+if(~isempty(isspot))
+    fprintf('Spot found\n')
 else
-    fprintf('Unzipping Spot toolbox...\n')
-    unzip(path,'+sparco')
-end
+    fprintf('Spot not found\n');
+    fprintf('   Downloading Spot...\n');
+    spotwebsite = 'http://www.cs.ubc.ca/labs/scl/spot/';
+    website = urlread(spotwebsite);
+    dl = strfind(website, 'Download');
+    website = website(dl(1):size(website,2));
+    spotURL = strfind(website, '<a href="');
+    website = website((spotURL(1)+9):size(website,2));
+    endofURL = strfind(website,'"');
+    website = website(1:(endofURL-1));
 
-delete(path)
+    if(isempty(strfind(website,'www'))&&isempty(strfind(website,'http')))
+        website = strcat(spotwebsite,website);
+    end
+    
+    [path,status] = urlwrite(website,'spot.zip');
 
-list = dir('+sparco');
+    if(status==0)
+        warning('Could not download Spot toolbox from website\n');
+    else
+        fprintf('   Unzipping Spot toolbox...\n')
+        unzip(path,'+sparco')
+    end
 
-for i=1:length(list)
-    if(~isempty(strfind(list(i).name,'spotbox')))
-        if(list(i).isdir)
-            spotDirName = strcat('+sparco/',list(i).name);
-            newspotDirname = strcat('+sparco/+',list(i).name);
-            movefile(spotDirName,newspotDirname);
-            break
+    delete(path)
+
+    list = dir('+sparco');
+
+    for i=1:length(list)
+        if(~isempty(strfind(list(i).name,'spotbox')))
+            if(list(i).isdir)
+                spotDirName = strcat('+sparco/',list(i).name);
+                newspotDirname = strcat('+sparco/+',list(i).name);
+                movefile(spotDirName,newspotDirname);
+                break
+            end
         end
     end
+    
+    fprintf('Spot toolbox added\n')
 end
-
 % ----------------------------------------------------------------------
 % NESTED FUNCTIONS
 % ----------------------------------------------------------------------
