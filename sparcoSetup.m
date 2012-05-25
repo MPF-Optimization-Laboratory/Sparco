@@ -17,7 +17,7 @@ root = fileparts(which(mfilename));
 % ----------------------------------------------------------------------
 addtopath(root,'');
 addtopath(root,'examples');
-addtopath(root,'operators');
+%addtopath(root,'operators');
 addtopath(root,'problems');
 addtopath(root,'tools');
 addtopath(root,['tools' filesep 'nufft']);
@@ -44,55 +44,100 @@ end
 % ----------------------------------------------------------------------
 [opts,varg]= parseOptions(varargin,{'norwt'},{});
 
+% % ----------------------------------------------------------------------
+% % Check for external dependencies.
+% % ----------------------------------------------------------------------
+% 
+% % Commented May 25th
+% 
+% % CurveLab: Req'd for 51-52
+% if exist('curvelab.pdf','file')
+%    crvroot = fileparts(which('curvelab.pdf'));
+%    addtopath(crvroot,'fdct_usfft_matlab');
+%    addtopath(crvroot,'fdct_wrapping_matlab');
+%    addtopath(crvroot,'fdct_wrapping_cpp/mex');
+%    addtopath(crvroot,'fdct3d/mex');
+% else
+%    fprintf(['\nWarning: CurveLab is not in the path. Problems 50-51 ' ...
+%             'will not work.\n\n']);
+% end
+% 
+% [T,result] = evalc('savepath;');
+% rehash path;
+% if result == 1
+%    fprintf(['\n' ...
+%             '\n Warning: SPARCO successfully added to your path,' ...
+%             '\n          but couldn''t make these changes permanent.' ...
+%             '\n          To permanently add SPARCO to your path,'...
+%             '\n          copy and paste the following lines into your'...
+%             '\n          startup.m file (e.g., ~/matlab/startup.m).'...
+%             '\n\n']);
+%    for i=1:length(pathlist)
+%      fprintf(' addpath(''%s'');\n',pathlist{i});
+%    end
+%    fprintf('\n');
+% end
+% 
+% % ----------------------------------------------------------------------
+% % Compile the Rice Wavelet Toolbox
+% % ----------------------------------------------------------------------
+% 
+% if ~opts.norwt
+%    cd([root filesep 'tools' filesep 'rwt'])
+%    fprintf('Compiling the Rice Wavelet Toolbox MEX interfaces...');
+%    try
+%       if exist('mdwt'  ,'file')~=3, mex mdwt.c   mdwt_r.c;   end
+%       if exist('midwt' ,'file')~=3, mex midwt.c  midwt_r.c;  end
+%       if exist('mrdwt' ,'file')~=3, mex mrdwt.c  mrdwt_r.c;  end
+%       if exist('mirdwt','file')~=3, mex mirdwt.c mirdwt_r.c; end
+%       fprintf('Success!\n');
+%   catch
+%       warning('Could not compile Rice Wavelet Toolbox MEX interfaces.');
+%   end
+%   cd(root)
+% end
+
 % ----------------------------------------------------------------------
-% Check for external dependencies.
+% Check if Spot toolbox is installed and install it if not 
 % ----------------------------------------------------------------------
 
-% CurveLab: Req'd for 51-52
-if exist('curvelab.pdf','file')
-   crvroot = fileparts(which('curvelab.pdf'));
-   addtopath(crvroot,'fdct_usfft_matlab');
-   addtopath(crvroot,'fdct_wrapping_matlab');
-   addtopath(crvroot,'fdct_wrapping_cpp/mex');
-   addtopath(crvroot,'fdct3d/mex');
+fprintf('Trying to find Spot toolbox...\n');
+fprintf('Spot not found.\n');
+fprintf('Downloading Spot...\n');
+spotwebsite = 'http://www.cs.ubc.ca/labs/scl/spot/';
+website = urlread(spotwebsite);
+dl = strfind(website, 'Download');
+website = website(dl(1):size(website,2));
+spotURL = strfind(website, '<a href="');
+website = website((spotURL(1)+9):size(website,2));
+endofURL = strfind(website,'"');
+website = website(1:(endofURL-1));
+
+if(isempty(strfind(website,'www'))&&isempty(strfind(website,'http')))
+    website = strcat(spotwebsite,website);
+end
+[path,status] = urlwrite(website,'spot.zip');
+
+if(status==0)
+    warning('Could not download Spot toolbox from website\n');
 else
-   fprintf(['\nWarning: CurveLab is not in the path. Problems 50-51 ' ...
-            'will not work.\n\n']);
+    fprintf('Unzipping Spot toolbox...\n')
+    unzip(path,'+sparco')
 end
 
-[T,result] = evalc('savepath;');
-rehash path;
-if result == 1
-   fprintf(['\n' ...
-            '\n Warning: SPARCO successfully added to your path,' ...
-            '\n          but couldn''t make these changes permanent.' ...
-            '\n          To permanently add SPARCO to your path,'...
-            '\n          copy and paste the following lines into your'...
-            '\n          startup.m file (e.g., ~/matlab/startup.m).'...
-            '\n\n']);
-   for i=1:length(pathlist)
-     fprintf(' addpath(''%s'');\n',pathlist{i});
-   end
-   fprintf('\n');
-end
+delete(path)
 
-% ----------------------------------------------------------------------
-% Compile the Rice Wavelet Toolbox
-% ----------------------------------------------------------------------
+list = dir('+sparco');
 
-if ~opts.norwt
-   cd([root filesep 'tools' filesep 'rwt'])
-   fprintf('Compiling the Rice Wavelet Toolbox MEX interfaces...');
-   try
-      if exist('mdwt'  ,'file')~=3, mex mdwt.c   mdwt_r.c;   end
-      if exist('midwt' ,'file')~=3, mex midwt.c  midwt_r.c;  end
-      if exist('mrdwt' ,'file')~=3, mex mrdwt.c  mrdwt_r.c;  end
-      if exist('mirdwt','file')~=3, mex mirdwt.c mirdwt_r.c; end
-      fprintf('Success!\n');
-  catch
-      warning('Could not compile Rice Wavelet Toolbox MEX interfaces.');
-  end
-  cd(root)
+for i=1:length(list)
+    if(~isempty(strfind(list(i).name,'spotbox')))
+        if(list(i).isdir)
+            spotDirName = strcat('+sparco/',list(i).name);
+            newspotDirname = strcat('+sparco/+',list(i).name);
+            movefile(spotDirName,newspotDirname);
+            break
+        end
+    end
 end
 
 % ----------------------------------------------------------------------
