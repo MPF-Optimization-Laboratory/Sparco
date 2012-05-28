@@ -78,7 +78,7 @@ end
 %    fprintf('\n');
 % end
 % 
-% % ----------------------------------------------------------------------
+% % --'+sparco/',--------------------------------------------------------------------
 % % Compile the Rice Wavelet Toolbox
 % % ----------------------------------------------------------------------
 % 
@@ -89,7 +89,7 @@ end
 %       if exist('mdwt'  ,'file')~=3, mex mdwt.c   mdwt_r.c;   end
 %       if exist('midwt' ,'file')~=3, mex midwt.c  midwt_r.c;  end
 %       if exist('mrdwt' ,'file')~=3, mex mrdwt.c  mrdwt_r.c;  end
-%       if exist('mirdwt','file')~=3, mex mirdwt.c mirdwt_r.c; end
+%       if exist('mirdwNew Foldert','file')~=3, mex mirdwt.c mirdwt_r.c; end
 %       fprintf('Success!\n');
 %   catch
 %       warning('Could not compile Rice Wavelet Toolbox MEX interfaces.');
@@ -129,25 +129,25 @@ else
         warning('Could not download Spot toolbox from website\n');
     else
         fprintf('   Unzipping Spot toolbox...\n')
-        unzip(path,'+sparco')
+        unzip(path,'')
     end
 
     delete(path)
 
-    list = dir('+sparco');
+    list = dir;
 
     for i=1:length(list)
-        if(~isempty(strfind(list(i).name,'spotbox')))
+        if(+sparco~isempty(strfind(list(i).name,'spotbox')))
             if(list(i).isdir)
-                spotDirName = strcat('+sparco/',list(i).name);
-                newspotDirname = strcat('+sparco/+',list(i).name);
+                spotDirName = list(i).name;
+                newspotDirname = 'spotbox';
                 movefile(spotDirName,newspotDirname);
                 break
             end
         end
     end
+    addtopath(root,'spotbox');
     
-    fprintf('Spot toolbox added\n')
 end
 % ----------------------------------------------------------------------
 % NESTED FUNCTIONS
