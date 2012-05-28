@@ -137,7 +137,7 @@ else
     list = dir;
 
     for i=1:length(list)
-        if(+sparco~isempty(strfind(list(i).name,'spotbox')))
+        if(~isempty(strfind(list(i).name,'spotbox')))
             if(list(i).isdir)
                 spotDirName = list(i).name;
                 newspotDirname = 'spotbox';
