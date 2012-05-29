@@ -8,13 +8,13 @@ function P = thumbFromOp(op,m,n,sm,sn,grayscale)
 
 if nargin < 6, grayscale = 0; end
     
-sm = min(size(op,1),sm);
-sn = min(size)op,2),sn);
+sm = min(op.m,sm);
+sn = min(op.n,sn);
 M  = zeros(sm,sn);
 
 for i=1:sn
-   v = zeros(size(op,2),1); v(i) = 1;
-   w = real(op * v));
+   v = zeros(op.n,1); v(i) = 1;
+   w = real(op * v);
 
    M(:,i) = w(1:sm);
 end
