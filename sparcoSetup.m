@@ -16,12 +16,12 @@ root = fileparts(which(mfilename));
 % Add Sparco subdirs to path.
 % ----------------------------------------------------------------------
 addtopath(root,'');
-addtopath(root,'examples');
+%addtopath(root,'examples');
 %addtopath(root,'operators');
-addtopath(root,'problems');
-addtopath(root,'tools');
-addtopath(root,['tools' filesep 'nufft']);
-addtopath(root,['tools' filesep 'rwt']);
+%addtopath(root,'problems');
+%addtopath(root,'tools');
+%addtopath(root,['tools' filesep 'nufft']);
+%addtopath(root,['tools' filesep 'rwt']);
 
 % Make sure that the build subdir exists
 buildpath = {['build'],                          ...
