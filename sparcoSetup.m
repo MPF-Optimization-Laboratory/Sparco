@@ -101,14 +101,12 @@ end
 % Check if Spot toolbox is installed and install it if not 
 % ----------------------------------------------------------------------
 
-fprintf('Trying to find Spot toolbox...\n');
-
-isspot = strfind(ls('+sparco'),'+spotbox');
+isspot = strfind(ls,'spotbox');
 
 if(~isempty(isspot))
-    fprintf('Spot found\n')
+    fprintf('Spot toolbox found\n')
 else
-    fprintf('Spot not found\n');
+    fprintf('Spot toolbox not found\n');
     fprintf('   Downloading Spot...\n');
     spotwebsite = 'http://www.cs.ubc.ca/labs/scl/spot/';
     website = urlread(spotwebsite);
