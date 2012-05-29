@@ -4,6 +4,9 @@ function updateFigure(opts, figTitle, figFilename)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: updateFigure.m 1027 2008-06-24 23:42:28Z ewout78 $
 
+include spot.utils.*
+include sparco.tools.*
+
 % Ensure default values are available
 opts.linewidth  = getOption(opts,'linewidth', []);
 opts.fontsize   = getOption(opts,'fontsize',  []);

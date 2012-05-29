@@ -12,6 +12,8 @@ function thumbwrite(data,name,opts)
 %   .thumbdir   Output directory
 %
 
+include sparco.tools.*
+
 [type,ext] = getFigureExt(opts.thumbtype);
 data = round(data * 255) / 255;
 imwrite(data,[opts.thumbpath,name,'.',ext],type);
