@@ -12,6 +12,8 @@ function [opts,args] = parseDefaultOpts(args)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: parseDefaultOpts.m 1680 2010-07-08 22:54:39Z mpf $
 
+include spot.utils.*
+
 % Parse default option arguments
 flagKeys = {'update','show','getname'};
 optsKeys = {'buildpath', 'buildpathHTML', ...
