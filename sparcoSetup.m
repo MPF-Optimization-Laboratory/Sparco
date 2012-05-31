@@ -7,6 +7,9 @@ function sparcoSetup(varargin)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: sparcoSetup.m 1027 2008-06-24 23:42:28Z ewout78 $
 
+%   SPARCOSETUP('spotpath', PATH) will set up the default spot's path to
+%   PATH
+
 pathlist = {};
 
 % Get root location of sparcoSetup
@@ -42,7 +45,7 @@ end
 % ----------------------------------------------------------------------
 % Parse parameters.
 % ----------------------------------------------------------------------
-[opts,varg]= parseOptions(varargin,{'norwt'},{});
+[opts,varg]= parseDefaultOpts(varargin);
 
 % % ----------------------------------------------------------------------
 % % Check for external dependencies.
