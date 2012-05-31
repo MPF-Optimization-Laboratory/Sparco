@@ -6,7 +6,7 @@ function P = thumbPlot(P,x,y,color)
 
 m = size(P,1);
 n = size(P,2);
-if (size(P,3) == 0) & (length(color) == 3)
+if (size(P,3) == 0) && (length(color) == 3)
   % Convert to gray-scale
   color = 0.30*color(1) + 0.59*color(2) + 0.11*color(3);
 end

@@ -14,12 +14,12 @@ end
 
 % Define measurement matrix if needed
 if ~flagM
-  data.M = opDirac(size(data.B,1));
+  data.M = opDirac(data.B.m);
 end
 
 % Define sparsity basis if needed
 if ~flagB
-  data.B = opDirac(size(data.M,2));
+  data.B = opDirac(data.M.n);
 end
 
 % Define operator A if needed
