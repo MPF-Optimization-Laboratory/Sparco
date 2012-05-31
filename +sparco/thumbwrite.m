@@ -12,7 +12,7 @@ function thumbwrite(data,name,opts)
 %   .thumbdir   Output directory
 %
 
-include sparco.tools.*
+import sparco.tools.*
 
 [type,ext] = getFigureExt(opts.thumbtype);
 data = round(data * 255) / 255;
