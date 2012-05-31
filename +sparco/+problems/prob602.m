@@ -40,8 +40,8 @@ function data = prob602(varargin)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: prob602.m 1677 2010-04-29 23:08:47Z mpf $
 
-include spot.utils.* 
-include sparco.*
+import spot.utils.* 
+import sparco.*
 
 % Parse parameters and set problem name
 [opts,varg] = parseDefaultOpts(varargin);
