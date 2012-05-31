@@ -46,7 +46,7 @@ opts.markersize = getOption(opts,'markersize',[]);
 
 % --- Path information and file types -------------------------
 pathstr = fileparts(mfilename('fullpath'));
-idx  = strfind('+sparco');
+idx  = strfind(pathstr,'+sparco');
 root = pathstr(1:idx(end)-2);
 
 opts.rootpath      = [root filesep];
