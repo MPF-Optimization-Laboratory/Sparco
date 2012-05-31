@@ -101,7 +101,7 @@ end
 % Check if Spot toolbox is installed and install it if not 
 % ----------------------------------------------------------------------
 
-isspot = strfind(ls,'spotbox');
+isspot = strfind(ls(opts.rootpath),'spotbox');
 
 if(~isempty(isspot))
     fprintf('Spot toolbox found\n')
@@ -127,16 +127,21 @@ else
         warning('Could not download Spot toolbox from website\n');
     else
         fprintf('   Unzipping Spot toolbox...\n')
-        unzip(path,'')
+        unzip(path,opts.rootpath)
     end
 
     delete(path)
 
-    list = dir;
+end
 
-    for i=1:length(list)
-        if(~isempty(strfind(list(i).name,'spotbox')))
-            if(list(i).isdir)
+list = dir(opts.rootpath);
+
+for i=1:length(list)
+    if(~isempty(strfind(list(i).name,'spotbox')))
+        if(list(i).isdir)
+            if(strcmp(list(i).name,'spotbox')) %Rename folder if needed
+                break
+            else
                 spotDirName = list(i).name;
                 newspotDirname = 'spotbox';
                 movefile(spotDirName,newspotDirname);
@@ -147,6 +152,8 @@ else
 end
 
 addtopath(root,'spotbox');
+
+
 % ----------------------------------------------------------------------
 % NESTED FUNCTIONS
 % ----------------------------------------------------------------------
