@@ -46,13 +46,12 @@ opts.markersize = getOption(opts,'markersize',[]);
 
 % --- Path information and file types -------------------------
 pathstr = fileparts(mfilename('fullpath'));
-idx  = find(pathstr == filesep);
-root = pathstr(1:idx(end)-1);
+idx  = strfind('+sparco');
+root = pathstr(1:idx(end)-2);
 
 opts.rootpath      = [root filesep];
-opts.oppath        = [opts.rootpath 'operators' filesep];
 
-defaultpath        = [opts.rootpath 'problems' filesep];
+defaultpath        = [opts.rootpath '+sparco' filesep '+problems' filesep];
 opts.problempath   = getOption(opts,'problempath', defaultpath);
 opts.problempath   = addfilesep(opts.problempath);
 
