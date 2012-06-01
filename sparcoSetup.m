@@ -10,6 +10,8 @@ function sparcoSetup(varargin)
 %   SPARCOSETUP('spotpath', PATH) will check for Spot's toolbox in PATH, if
 %   it is not found it will download and extract it in the default forlder.
 
+import sparco.tools.*
+
 pathlist = {};
 
 % Get root location of sparcoSetup
