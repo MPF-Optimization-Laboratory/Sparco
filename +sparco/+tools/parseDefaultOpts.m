@@ -76,13 +76,13 @@ defaultpath        = [opts.buildpath 'figures' filesep];
 opts.figpath       = getOption(opts,'figpath', defaultpath);
 opts.figpath       = addfilesep(opts.figpath);
 
-defaultpath        = [opts.buildpath 'figures' filesep];
-opts.figpath       = getOption(opts,'figpath', defaultpath);
-opts.figpath       = addfilesep(opts.figpath);
-
 defaultpath        = [opts.rootpath 'spotbox' filesep];
 opts.spotpath       = getOption(opts,'spotpath', defaultpath);
 opts.spotpath       = addfilesep(opts.spotpath);
+
+defaultpath        = [opts.rootpath 'documentation' filesep];
+opts.docpath       = getOption(opts,'docpath', defaultpath);
+opts.docpath       = addfilesep(opts.docpath);
 
 defaultpath        = [opts.docpath 'thumbs' filesep];
 opts.opthumbpath   = getOption(opts,'opthumbpath', defaultpath);
