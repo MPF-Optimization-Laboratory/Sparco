@@ -20,7 +20,7 @@ else
         fprintf(['Could not find dottest.m in Spot' char(39) ...
             's tests directory'])
     else
-        addtopath(dottestpath);
+        addpath(dottestpath);
         doDottest = 1;
     end 
 end
