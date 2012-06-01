@@ -39,6 +39,9 @@ function data = prob601(varargin)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: prob601.m 1680 2010-07-08 22:54:39Z mpf $
 
+import spot.utils.* 
+import sparco.*
+
 % Parse parameters and set problem name
 [opts,varg] = parseDefaultOpts(varargin);
 [parm,varg] = parseOptions(varg,{'noseed'},{'m','scale'});
