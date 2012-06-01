@@ -1,4 +1,4 @@
-function data = probSparseman(varargin)
+function data = prob052(varargin)
 %PROB052  Daubechies basis, "Man peeling orange" image.
 %
 %   PROB052 creates a problem structure.  The generated signal will
