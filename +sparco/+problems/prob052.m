@@ -34,6 +34,7 @@ function data = prob052(varargin)
 
 import spot.utils.* 
 import sparco.*
+import sparco.tools.*
 
 [opts,varg] = parseDefaultOpts(varargin);
 [parm,varg] = parseOptions(varg,{'noseed'},{'k','p'});
