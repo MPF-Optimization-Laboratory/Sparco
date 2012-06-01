@@ -11,6 +11,10 @@ function data = generateProblem(varargin)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: generateProblem.m 1680 2010-07-08 22:54:39Z mpf $
 
+import sparco.tools.*
+import sparco.problems.*
+import spot.utils.*
+
 % Parse default arguments
 [flags,varargin]= parseOptions(varargin,{'list','update-all','help','lookup','version'},{});
 opts = parseDefaultOpts(varargin);
