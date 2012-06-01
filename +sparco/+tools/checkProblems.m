@@ -42,8 +42,9 @@ for i = list
    end
    
    % Perform dot test on operator P.A
+     
    try
-      status = dottest(P.A,5,'quiet');
+      status = -dottest(P.A,5);
    catch
       status = -2;
    end
