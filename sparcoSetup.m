@@ -7,8 +7,8 @@ function sparcoSetup(varargin)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: sparcoSetup.m 1027 2008-06-24 23:42:28Z ewout78 $
 
-%   SPARCOSETUP('spotpath', PATH) will set up the default spot's path to
-%   PATH
+%   SPARCOSETUP('spotpath', PATH) will check for Spot's toolbox in PATH, if
+%   it is not found it will download and extract it in the default forlder.
 
 pathlist = {};
 
@@ -104,9 +104,7 @@ end
 % Check if Spot toolbox is installed and install it if not 
 % ----------------------------------------------------------------------
 
-isspot = strfind(ls(opts.rootpath),'spotbox');
-
-if(~isempty(isspot))
+if(exist(opts.spotpath,'dir'))
     fprintf('Spot toolbox found\n')
 else
     fprintf('Spot toolbox not found\n');
@@ -134,27 +132,30 @@ else
     end
 
     delete(path)
-
-end
-
-list = dir(opts.rootpath);
-
-for i=1:length(list)
-    if(~isempty(strfind(list(i).name,'spotbox')))
-        if(list(i).isdir)
-            if(strcmp(list(i).name,'spotbox')) %Rename folder if needed
-                break
-            else
-                spotDirName = list(i).name;
-                newspotDirname = 'spotbox';
-                movefile(spotDirName,newspotDirname);
-                break
+    
+    list = dir(opts.rootpath);
+    
+    for i=1:length(list)
+        if(~isempty(strfind(list(i).name,'spotbox')))
+            if(list(i).isdir)
+                if(strcmp(list(i).name,'spotbox')) %Rename folder if needed
+                    break
+                else
+                    spotDirName = list(i).name;
+                    newspotDirname = 'spotbox';
+                    movefile(spotDirName,newspotDirname);
+                    break
+                end
             end
         end
     end
 end
 
-addtopath(root,'spotbox');
+spotpath = opts.spotpath;
+idx = strfind(spotpath,filesep);
+spotrootpath = spotpath(1:idx(end-1));
+spotdir = spotpath(idx(end-1)+1:idx(end)-1);
+addtopath(spotrootpath,spotdir);
 
 
 % ----------------------------------------------------------------------
