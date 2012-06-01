@@ -21,6 +21,7 @@ function data = prob055(varargin)
 
 import spot.utils.* 
 import sparco.*
+import sparco.tools.*
 
 % Parse parameters
 [opts,varg] = parseDefaultOpts(varargin);
