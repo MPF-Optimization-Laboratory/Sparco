@@ -47,7 +47,6 @@ end
 % ----------------------------------------------------------------------
 % Parse parameters.
 % ----------------------------------------------------------------------
-[opts,varg]= parseDefaultOpts(varargin);
 
 % % ----------------------------------------------------------------------
 % % Check for external dependencies.
@@ -106,9 +105,7 @@ end
 % Check if Spot toolbox is installed and install it if not 
 % ----------------------------------------------------------------------
 
-if(exist(opts.spotpath,'dir'))
-    fprintf('Spot toolbox found\n')
-else
+if(~exist(fullfile(root,'spotbox'),'dir'))
     fprintf('Spot toolbox not found\n');
     fprintf('   Downloading Spot...\n');
     spotwebsite = 'http://www.cs.ubc.ca/labs/scl/spot/';
@@ -130,33 +127,33 @@ else
         warning('Could not download Spot toolbox from website\n');
     else
         fprintf('   Unzipping Spot toolbox...\n')
-        unzip(path,opts.rootpath)
+        unzip(path,root)
     end
-
+    
     delete(path)
     
-    list = dir(opts.rootpath);
+else
+    fprintf('Spot toolbox found\n')
+end;
     
-    for i=1:length(list)
-        if(~isempty(strfind(list(i).name,'spotbox')))
-            if(list(i).isdir)
-                if(strcmp(list(i).name,'spotbox')) %Rename folder if needed
-                    break
-                else
-                    spotDirName = list(i).name;
-                    newspotDirname = 'spotbox';
-                    movefile(spotDirName,newspotDirname);
-                    break
-                end
+list = dir(root);
+
+for i=1:length(list)
+    if(~isempty(strfind(list(i).name,'spotbox')))
+        if(list(i).isdir)
+            if(strcmp(list(i).name,'spotbox')) %Rename folder if needed
+                break
+            else
+                spotDirName = list(i).name;
+                newspotDirname = 'spotbox';
+                movefile(spotDirName,newspotDirname);
+                break
             end
         end
     end
 end
 
-idx = strfind(opts.spotpath,filesep);
-spotrootpath = opts.spotpath(1:(idx(end-1)-1));
-spotdir = opts.spotpath((idx(end-1)+1):(idx(end)-1));
-addtopath(spotrootpath,spotdir);
+addtopath(root,'spotbox');
 
 
 % ----------------------------------------------------------------------
