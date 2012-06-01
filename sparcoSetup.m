@@ -151,10 +151,9 @@ else
     end
 end
 
-spotpath = opts.spotpath;
-idx = strfind(spotpath,filesep);
-spotrootpath = spotpath(1:idx(end-1));
-spotdir = spotpath(idx(end-1)+1:idx(end)-1);
+idx = strfind(opts.spotpath,filesep);
+spotrootpath = opts.spotpath(1:idx(end-1));
+spotdir = opts.spotpath(idx(end-1)+1:idx(end)-1);
 addtopath(spotrootpath,spotdir);
 
 
