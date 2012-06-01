@@ -15,13 +15,14 @@ function op = opDifference(size)
 %   $Id: opDifference.m 1027 2008-06-24 23:42:28Z ewout78 $
 
 if length(size) == 1
-   op = @(x,mode) opDifference_intrnl1(size(1),x,mode);
+   fun = @(x,mode) opDifference_intrnl1(size(1),x,mode);
 elseif length(size) == 2
-   op = @(x,mode) opDifference_intrnl2(size(1),size(2),x,mode);
+   fun = @(x,mode) opDifference_intrnl2(size(1),size(2),x,mode);
 else
   error('Higher dimensional difference operator not supported yet');
 end
 
+op = opFunction(size(1),size(1),fun);
 
 function y = opDifference_intrnl1(m,x,mode)
 if (mode == 1)

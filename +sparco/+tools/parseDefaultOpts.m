@@ -12,11 +12,13 @@ function [opts,args] = parseDefaultOpts(args)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: parseDefaultOpts.m 1680 2010-07-08 22:54:39Z mpf $
 
+import spot.utils.*
+
 % Parse default option arguments
 flagKeys = {'update','show','getname'};
 optsKeys = {'buildpath', 'buildpathHTML', ...
             'problempath', 'datapath', ...
-            'docpath', 'opthumbpath', ...
+            'spotpath', 'docpath', 'opthumbpath', ...
             'thumbpath','thumbtype', ...
             'linewidth','fontsize','markersize', ...
             'figpath', 'figtype', 'figno','figinc'};
@@ -44,13 +46,12 @@ opts.markersize = getOption(opts,'markersize',[]);
 
 % --- Path information and file types -------------------------
 pathstr = fileparts(mfilename('fullpath'));
-idx  = find(pathstr == filesep);
-root = pathstr(1:idx(end)-1);
+idx  = strfind(pathstr,'+sparco');
+root = pathstr(1:idx(end)-2);
 
 opts.rootpath      = [root filesep];
-opts.oppath        = [opts.rootpath 'operators' filesep];
 
-defaultpath        = [opts.rootpath 'problems' filesep];
+defaultpath        = [opts.rootpath '+sparco' filesep '+problems' filesep];
 opts.problempath   = getOption(opts,'problempath', defaultpath);
 opts.problempath   = addfilesep(opts.problempath);
 
@@ -75,9 +76,13 @@ defaultpath        = [opts.buildpath 'figures' filesep];
 opts.figpath       = getOption(opts,'figpath', defaultpath);
 opts.figpath       = addfilesep(opts.figpath);
 
-defaultpath        = [opts.rootpath 'documentation' filesep];
-opts.docpath       = getOption(opts,'docpath', defaultpath);
-opts.docpath       = addfilesep(opts.docpath);
+defaultpath        = [opts.buildpath 'figures' filesep];
+opts.figpath       = getOption(opts,'figpath', defaultpath);
+opts.figpath       = addfilesep(opts.figpath);
+
+defaultpath        = [opts.rootpath 'spotbox' filesep];
+opts.spotpath       = getOption(opts,'spotpath', defaultpath);
+opts.spotpath       = addfilesep(opts.spotpath);
 
 defaultpath        = [opts.docpath 'thumbs' filesep];
 opts.opthumbpath   = getOption(opts,'opthumbpath', defaultpath);

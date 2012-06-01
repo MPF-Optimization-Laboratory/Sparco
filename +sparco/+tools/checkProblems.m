@@ -11,6 +11,21 @@ function checkProblems(list)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: checkProblems.m 1485 2009-09-09 03:41:37Z ewout78 $
 
+doDottest = 0;
+dottestpath = fullfile(spot.path,'tests');
+if(~exist(dottestpath,'dir'))
+    fprintf(['Could not find Spot' char(39) 's tests directory']);
+else
+    if(~exist(fullfile(dottestpath,'dottest.m'),'file'))
+        fprintf(['Could not find dottest.m in Spot' char(39) ...
+            's tests directory'])
+    else
+        addtopath(dottestpath);
+        doDottest = 1;
+    end 
+end
+    
+
 if (nargin < 1)
   list = generateProblem('list');
 end
@@ -42,20 +57,27 @@ for i = list
    end
    
    % Perform dot test on operator P.A
-   try
-      status = dottest(P.A,5,'quiet');
-   catch
-      status = -2;
-   end
-   
-   if status == -1
-     fprintf('Failed\n');
-     fprintf('%22sWARNING: Dot test failed on operator A!\n', '', i);
-   elseif status == -2
-     err = lasterror; msg = err.message;
-     fprintf('Failed\n');
-     fprintf('%22sWARNING: %s\n','',strrep(msg,char(10),': '));
-   else
-     fprintf('OK\n');
-   end
+     
+  if doDottest
+       try
+          status = -dottest(P.A,5);
+       catch
+          status = -2;
+       end
+
+       if status == -1
+         fprintf('Failed\n');
+         fprintf('%22sWARNING: Dot test failed on operator A!\n', '', i);
+       elseif status == -2
+         err = lasterror; msg = err.message;
+         fprintf('Failed\n');
+         fprintf('%22sWARNING: %s\n','',strrep(msg,char(10),': '));
+       else
+         fprintf('OK\n');
+       end
+  end
+end
+
+if doDottest
+    rmpath(dottestpath);
 end
