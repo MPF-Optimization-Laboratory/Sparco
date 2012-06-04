@@ -30,30 +30,30 @@ function exSPGL1
 % The original signal is stored in the structure P
   yorig = P.signal;
 
-% Compute ideal observation bExact
-  MExact = P.op.padding * P.op.fft2d;
-  bExact = MExact * yorig(:); % bExact = padding*fft*signal
+% Compute real measurement bMes
+  MMes = P.M
+  bMes = MMes*y(:); % bMes = padding*fft*signal
 
 % Plot exact and observed Fourier coefficients
   figure;
   subplot(2,2,1);
-     imagesc(real(reshape(bExact,100,100)));
-     title('Real part exact');
+     imagesc(real(reshape(bMes,100,100)));
+     title('Real part observed');
      axis square;
      
   subplot(2,2,2);
-     imagesc(imag(reshape(bExact,100,100)));
-     title('Imaginary part exact');
+     imagesc(imag(reshape(bMes,100,100)));
+     title('Imaginary part observed');
      axis square;
      
   subplot(2,2,3);
      imagesc(real(reshape(P.b,100,100)));
-     title('Real part observed');
+     title('Real part exact');
      axis square;
      
   subplot(2,2,4);
      imagesc(imag(reshape(P.b,100,100)));
-     title('Imaginary part observed');
+     title('Imaginary part exact');
      axis square;
   
 % Plot original and recovered signal and difference
