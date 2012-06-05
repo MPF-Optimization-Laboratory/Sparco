@@ -13,6 +13,9 @@ function exSPGL1
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: exSPGL1.m 900 2008-05-06 21:06:00Z ewout78 $
 
+pathstr = fileparts(mfilename('fullpath'));
+pathstr = [pathstr filesep 'spgl1'];
+addpath(pathstr);
 
 % Generate problem 'angiogram' (Sparco problem 502)
   P = generateProblem('angiogram');
@@ -24,6 +27,9 @@ function exSPGL1
   sigma = 0; % Go for a basis pursuit solution
   z = spgl1(P.A, P.b, tau, sigma, [], opts);
 
+% Remove spgl1 folder from path
+  rmpath(pathstr)
+  
 % Reconstruct the signal y from the computed complex coefficients z
   y = P.reconstruct(z);
 
@@ -31,7 +37,7 @@ function exSPGL1
   yorig = P.signal;
 
 % Compute real measurement bMes
-  MMes = P.M
+  MMes = P.M;
   bMes = MMes*y(:); % bMes = padding*fft*signal
 
 % Plot exact and observed Fourier coefficients
