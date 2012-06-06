@@ -12,6 +12,8 @@ function exTV
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: exTV.m 900 2008-05-06 21:06:00Z ewout78 $
 
+  import sparco.tools.*
+
   % Create the data
   data = generateProblem(502);
 

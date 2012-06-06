@@ -146,7 +146,7 @@ end
 function [f,g] = computeInfo(x)
    z    = B * x;
    Mz   = M * z;
-   Tz   = TV(z,1);
+   Tz   = TV*z;
    Tzw  = Tz.*weightTV;
    xw   = x.*weightLp;
    Tz2w = Tzw.*conj(Tzw);
@@ -165,7 +165,7 @@ function [f,g] = computeInfo(x)
      gLp = p *     (weightLp.*(xw.*power(x2w   + mu,p/2-1)));
    end
    if flagTV,
-     gTV = q * B' * TV(weightTV.*(Tzw.*power(Tz2w + mu,q/2-1)),2);
+     gTV = q * B' * TV'*(weightTV.*(Tzw.*power(Tz2w + mu,q/2-1)));
    end;
    g = gRes + gammaLp * gLp + gammaTV * gTV;
 end

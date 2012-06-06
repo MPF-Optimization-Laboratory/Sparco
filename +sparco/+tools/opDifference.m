@@ -15,14 +15,20 @@ function op = opDifference(size)
 %   $Id: opDifference.m 1027 2008-06-24 23:42:28Z ewout78 $
 
 if length(size) == 1
+   m = size(1);
+   n = 1;
+   l = 1;
    fun = @(x,mode) opDifference_intrnl1(size(1),x,mode);
 elseif length(size) == 2
+   m = size(1);
+   n = size(2);
+   l = 2;
    fun = @(x,mode) opDifference_intrnl2(size(1),size(2),x,mode);
 else
   error('Higher dimensional difference operator not supported yet');
 end
 
-op = opFunction(size(1),size(1),fun);
+op = opFunction(l*n*m,n*m,fun);
 
 function y = opDifference_intrnl1(m,x,mode)
 if (mode == 1)
@@ -39,13 +45,15 @@ if (mode == 1)
    zx      = z([2:m,m],:) - z;
    zy      = z(:,[2:n,n]) - z;
    y       = [zx(:), zy(:)];
+   y       = reshape (y,2*m*n,1);
 else
-   xr      = reshape(x(:,1),m,n);
+   z       = reshape(x,m*n,2); 
+   xr      = reshape(z(:,1),m,n);
    zx      =  xr([1,1:m-1],:) - xr;
    zx(1,:) = -xr(1,:);
    zx(m,:) =  xr(m-1,:);
    
-   xr      = reshape(x(:,2),m,n);
+   xr      = reshape(z(:,2),m,n);
    zy      =  xr(:,[1,1:n-1]) - xr;
    zy(:,1) = -xr(:,1);
    zy(:,n) =  xr(:,n-1);
