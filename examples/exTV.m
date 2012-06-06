@@ -41,6 +41,7 @@ function exTV
   fprintf('----------------------------------------\n');
   input('Press "Return" to continue.');
   
+  figure;
   % Solve
   x = randn(prod(data.signalSize),1);
   for i=1:7
@@ -50,6 +51,26 @@ function exTV
     title(sprintf('Iteration %d',i));
     drawnow;
   end
+  
+  yreal = data.signal;
+  
+  % Plot original and recovered signal and difference
+  figure;
+  subplot(1,3,1);
+    imagesc(real(y));
+    title('Recovered signal');
+    axis square;
+    
+  subplot(1,3,2);
+    imagesc(real(yreal));
+    title('Original signal');
+    axis square;
+    
+  subplot(1,3,3);
+    imagesc(real(y - yreal));
+    title('Difference');
+    axis square;
+    
   
 end % function exTV
 
