@@ -16,18 +16,26 @@ function exGPSR
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: exGPSR.m 900 2008-05-06 21:06:00Z ewout78 $
 
+pathstr = fileparts(mfilename('fullpath'));
+pathstr = [pathstr filesep 'gpsr'];
+addpath(pathstr);
+
 % Generate problem 6: Piecwise cubic polynomial signal.
   P = generateProblem(6);
 
   b  = P.b;            % The right-hand-side vector.
-  m = P.sizeA(1);      % m is the no. of rows.
-  n = P.sizeA(2);      % n is the no. of columns.
+  m = P.A.m;      % m is the no. of rows.
+  n = P.A.n;      % n is the no. of columns.
   
 % Solve an L1 recovery problem:
 % minimize  1/2|| Ax - b ||_2^2  +  lambda ||x||_1.
   lambda = 1000;
   x = GPSR_BB(b, P.A, lambda);
   
+% Removes gpsr's path from pathlist  
+  
+  rmpath(pathstr);
+
 % The solution x is the reconstructed signal in the sparsity basis. 
   figure;
   plot(x); hold on; plot(P.x0,'ro'); hold off;

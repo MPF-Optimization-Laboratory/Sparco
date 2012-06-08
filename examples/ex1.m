@@ -13,8 +13,8 @@ function ex1
   A = P.A; % The operator A = Gaussian * Daubechies
   b = P.b; % The right-hand-side vector.
   
-  m = P.sizeA(1);  % m is the no. of rows in A.
-  n = P.sizeA(2);  % n is the no. of columns in A.
+  m = P.A.m;  % m is the no. of rows in A.
+  n = P.A.n;  % n is the no. of columns in A.
   
 % Some (but not all) problems have the "correct" sparse coefficient
 % vector.  Generally, finding this sparse representation is the hard

@@ -24,6 +24,10 @@ function exSeismic
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: exSeismic.m 900 2008-05-06 21:06:00Z ewout78 $
 
+pathstr = fileparts(mfilename('fullpath'));
+pathstr = [pathstr filesep 'spgl1'];
+addpath(pathstr);
+
 % First check if the CurveLab MEX interface is installed.
 if ~exist('fdct_wrapping_mex','file')
     error('The CurveLab MEX interfaces are not installed.')
@@ -55,6 +59,9 @@ opts = spgSetParms( 'iterations' , 100  , ...
                     ); 
 % Solve sparse recovery problem 
 [x, r, g, info] = spgl1(A, b, 0, 0, [], opts); 
+
+% Remove spgl1's path from path list
+rmpath(pathstr);
 
 % Construct interpolated seismic data 
 res = reshape(B * x,n1,n2);

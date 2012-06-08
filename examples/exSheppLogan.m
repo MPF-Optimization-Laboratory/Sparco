@@ -7,6 +7,8 @@ function exSheppLogan(n)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: exSheppLogan.m 603 2007-09-22 19:07:21Z mpf $
 
+import sparco.tools.*
+
 if nargin < 1, n  = 128; end
 
 figure(1); clf;

@@ -5,6 +5,10 @@ function exOp
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: exOp.m 900 2008-05-06 21:06:00Z ewout78 $
 
+pathstr = fileparts(mfilename('fullpath'));
+pathstr = [pathstr filesep 'spgl1'];
+addpath(pathstr);
+
   % Set problem size
   k = 20;  % Number of non-zero coefficients
   n = 128; % Coefficient length
@@ -31,6 +35,9 @@ function exOp
   input('Press <RETURN> to solve the problem . . .');
   [xs,r,g,info] = spgl1(A,b,0,0,[]);
   
+  % Remove spgl1 from path
+  rmpath(pathstr)
+  
   figure(1);
   plot(1:n,xs,'b',1:n,x0,'ro');
   legend('Solution found','Original coefficients');
@@ -47,7 +54,7 @@ function exOp
   
   % Extract matrix entries and plot
   disp('Extracting matrix from operator (plot 3)');
-  M = opToMatrix(A);
+  M = double(A);
   figure(3); imagesc(M);
 
 end % function exOp
