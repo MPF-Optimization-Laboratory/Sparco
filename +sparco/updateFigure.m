@@ -5,7 +5,6 @@ function updateFigure(opts, figTitle, figFilename)
 %   $Id: updateFigure.m 1027 2008-06-24 23:42:28Z ewout78 $
 
 import spot.utils.*
-import sparco.tools.*
 
 % Ensure default values are available
 opts.linewidth  = getOption(opts,'linewidth', []);
@@ -69,6 +68,7 @@ end
 
 
 function updateFigureType(update,show,figtype,figpath,figTitle,figFilename)
+import sparco.tools.*
 filename = [figpath,figFilename];
 
 switch lower(figtype)
