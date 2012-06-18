@@ -51,6 +51,57 @@ data.b      = M * signal;
 data.r      = zeros(size(data.b));
 data        = completeOps(data);
 
+% ======================================================================
+% The following is self-documentation code, and is optional.
+% ======================================================================
 
+% Additional information
+info.title           = 'Face Classification';
+info.thumb           = 'figProblem801';
+info.citations       = {''};
+info.fig{1}.title    = 'Face to classify';
+info.fig{1}.filename = 'figProblem801Face';
+info.fig{2}.title    = 'Face of set 1';
+info.fig{2}.filename = 'figProblem801Face1';
+info.fig{3}.title    = 'Face of set 2';
+info.fig{3}.filename = 'figProblem801Face2';
+info.fig{4}.title    = 'Face of set 3';
+info.fig{4}.filename = 'figProblem801Face3';
+info.fig{5}.title    = 'Face of set 4';
+info.fig{5}.filename = 'figProblem801Face4';
+info.fig{6}.title    = 'Face of set 5';
+info.fig{6}.filename = 'figProblem801Face5';
+info.fig{7}.title    = 'Face of set 6';
+info.fig{7}.filename = 'figProblem801Face6';
+info.fig{8}.title    = 'Face of set 7';
+info.fig{8}.filename = 'figProblem801Face7';
+info.fig{9}.title    = 'Face of set 8';
+info.fig{9}.filename = 'figProblem801Face8';
+
+% Set the info field in data
+data.info = info;
+
+% Plot figures
+if opts.update || opts.show
+    
+  figure(opts.figno); opts.figno = opts.figno + opts.figinc;
+  imagesc(reshape(data.signal,192,168)); colormap gray; axis square;
+  updateFigure(opts, info.fig{1}.title, info.fig{1}.filename);
+  
+  figure(opts.figno); opts.figno = opts.figno + opts.figinc;
+  for i=1:8
+      subplot(2,4,i);
+      img = imread(sprintf('%sprob80x_%d_01.pgm', opts.datapath, i));
+      imagesc(img); colormap gray; axis square;
+      updateFigure(opts, info.fig{i+1}.title, info.fig{i+1}.filename);
+  end
+%   % Output thumbnail
+%   if opts.update
+%      P = ones(128,128,3);
+%      P = thumbPlot(P,1:n,data.signal,[0,0,1]);
+%      P = (P(1:2:end,:,:) + P(2:2:end,:,:)) / 2;
+%      P = (P(:,1:2:end,:) + P(:,2:2:end,:)) / 2;
+%      thumbwrite(P, info.thumb, opts);
+%   end
 end
 
