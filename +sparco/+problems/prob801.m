@@ -26,6 +26,7 @@ idx = randperm(32256); idx = idx(1:m);
 imgidx = randperm(25); imgidx = imgidx(1:(n+1));
 solset = randi(8);
 signal = imread(sprintf('%sprob80x_%d_%02d.pgm', opts.datapath, solset, imgidx(1)));
+signal = im2double(signal);
 signal = reshape(signal,[],1);
 
 % Set up the operators
@@ -33,6 +34,7 @@ imgsets = zeros(32256,8*n);
 for i=1:8
     for j=1:n
         img = imread(sprintf('%sprob80x_%d_%02d.pgm', opts.datapath, i, imgidx(j+1)));
+        img = im2double(img);
         img = reshape(img,[],1);
         imgsets(:,(i-1)*n+j) = img;
     end
