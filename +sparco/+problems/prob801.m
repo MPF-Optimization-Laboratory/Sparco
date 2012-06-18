@@ -31,8 +31,8 @@ signal = reshape(signal,[],1);
 signal = Restriction*signal;
 
 % Set up the operators
+imgsets = zeros(m,8*n);
 for i=1:8
-    imgsets = zeros(m,8*n);
     for j=1:n
         img = imread(sprintf('%sprob80x_%d_%02d.pgm', opts.datapath, i, imgidx(j+1)));
         img = reshape(img,[],1);
