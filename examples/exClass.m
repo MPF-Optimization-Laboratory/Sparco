@@ -7,7 +7,7 @@ pathstr = [pathstr filesep 'spgl1'];
 addpath(pathstr);
 
 % Generate the problem of classification of uncorrupted images 
-  generateProblem('classuncorr')
+  P = generateProblem('classuncorr');
 
 % Solve the complex L1 recovery problem:
 % minimize  ||z||_1  subject to  Az = b
@@ -19,6 +19,7 @@ addpath(pathstr);
 % Remove spgl1 folder from path
   rmpath(pathstr)
   
+
   
 end
 
