@@ -1,5 +1,5 @@
-function data = prob801( varargin )
-%PROB801 Classification of uncorrupted images : Faces dictionnary, Face
+function data = prob802( varargin )
+%PROB802 Classification of corrupted images : Faces dictionnary, Face
 %signal
 %
 %   Detailed explanation goes here
@@ -13,7 +13,8 @@ import sparco.tools.*
 [parm,varg] = parseOptions(varg,{'noseed'},{'m','n'});
 m           = getOption(parm,'m', 1400); % Size of images
 n           = getOption(parm,'n', 18); % Size of training data (<25)
-info.name   = 'classuncorr';
+rho         = getOption(parm,'rho', 0.3); % Rate of corruption
+info.name   = 'classcorr';
 
 % Return problem name if requested
 if opts.getname, data = info.name; return; end;
@@ -22,11 +23,17 @@ if opts.getname, data = info.name; return; end;
 if ~parm.noseed, randn('state',0); rand('state',0); end
 
 % Set up the data
+idx = randperm(32256); idx = idx(1:m);
 imgidx = randperm(25); imgidx = imgidx(1:(n+1));
 solset = randi(8);
 signal = imread(sprintf('%sprob80x_%d_%02d.pgm', opts.datapath, solset, imgidx(1)));
 signal = im2double(signal);
 signal = reshape(signal,[],1);
+n_cor  = floor(rho*32256);
+coridx = randperm(32256); coridx = coridx(1:n_cor);
+corval = rand(1,n_cor);
+
+signal(coridx) = corval;
 
 % Set up the operators
 imgsets = zeros(32256,8*n);
@@ -38,8 +45,6 @@ for i=1:8
         imgsets(:,(i-1)*n+j) = img;
     end
 end
-idx = randperm(32256); idx = idx(1:m);
-
 B = opMatrix(imgsets);
 M = opRestriction(32256,idx);
 
