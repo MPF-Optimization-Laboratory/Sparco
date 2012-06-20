@@ -10,7 +10,7 @@ import sparco.tools.*
 
 % Parse parameters and set problem name
 [opts,varg] = parseDefaultOpts(varargin);
-[parm,varg] = parseOptions(varg,{'noseed'},{'m','n'});
+[parm,varg] = parseOptions(varg,{'noseed'},{'m','n','rho'});
 m           = getOption(parm,'m', 1400); % Size of images
 n           = getOption(parm,'n', 18); % Size of training data (<25)
 rho         = getOption(parm,'rho', 0.3); % Rate of corruption
