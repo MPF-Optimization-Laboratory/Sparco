@@ -2,7 +2,16 @@ function data = prob801( varargin )
 %PROB801 Classification of uncorrupted images : Faces dictionnary, Face
 %signal
 %
-%   Detailed explanation goes here
+%   PROB801 creates a problem structure. The generated signal will
+%   consist of a 192 by 168 grayscale image of a face. The signal is
+%   down-sampled to a M by 1 signal with M = 1400. It has a sparse
+%   representation in the dictionnary of the training data (N images from
+%   each of the 8 sets).
+%
+%   The following optional arguments are supported:
+%
+%   PROB801('m',M,'n',N,flags)
+%
 
 import spot.utils.* 
 import sparco.*
