@@ -84,7 +84,7 @@ data        = completeOps(data);
 % Additional information
 info.title           = 'Classification of uncorrupted images';
 info.thumb           = 'figProblem801';
-info.citations       = {''};
+info.citations       = {'ElhaVida:2011','LeeHoKrie:2005'};
 info.fig{1}.title    = 'Face to classify';
 info.fig{1}.filename = 'figProblem801Face';
 info.fig{2}.title    = 'Face of set 1';
