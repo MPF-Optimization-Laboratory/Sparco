@@ -2,7 +2,32 @@ function data = prob801( varargin )
 %PROB801 Classification of uncorrupted images : Faces dictionnary, Face
 %signal
 %
-%   Detailed explanation goes here
+%   PROB801 creates a problem structure. The generated signal will
+%   consist of a 192 by 168 grayscale image of a face. The signal is
+%   down-sampled to a M by 1 signal with M = 1400. It has a sparse
+%   representation in the dictionnary of the training data (N images from
+%   each of the 8 sets).
+%
+%   The following optional arguments are supported:
+%
+%   PROB801('m',M,'n',N,flags) is the same as above, but with a
+%   down-sampling to M and a dictionnary of N images from each of the 8
+%   sets. The 'noseed' flag can be specified to suppress initialization of 
+%   the random-number generators. Each of the parameter pairs and flags 
+%   can be omitted.
+%
+%   Examples:
+%   P = prob801;  % Creates the default 801 problem.
+%
+%   References:
+%
+%   [ElhaVida:2011] E. Elhamifar and R. Vidal, Robust Classification using
+%       Structured Sparse Representation, Computer Vision and Pattern 
+%       Recognition (CVPR), 2011 IEEE Conference on, pp. 1873-1879.
+%   
+%   [LeeHoKrie:2005] K.C. Lee and J. Ho and D. Kriegman, Acquiring Linear 
+%       Subspaces for Face Recognition under Variable Lighting, IEEE Trans. 
+%       Pattern Anal. Mach. Intelligence, 2005, 27(5), pp. 684-698.
 
 import spot.utils.* 
 import sparco.*
@@ -57,9 +82,9 @@ data        = completeOps(data);
 % ======================================================================
 
 % Additional information
-info.title           = 'Face Classification';
+info.title           = 'Classification of uncorrupted images';
 info.thumb           = 'figProblem801';
-info.citations       = {''};
+info.citations       = {'ElhaVida:2011','LeeHoKrie:2005'};
 info.fig{1}.title    = 'Face to classify';
 info.fig{1}.filename = 'figProblem801Face';
 info.fig{2}.title    = 'Face of set 1';
