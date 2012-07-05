@@ -10,7 +10,7 @@ pathstr = [pathstr filesep 'spgl1'];
 addpath(pathstr);
 
 % Generate the problem of classification of uncorrupted images 
-  P = generateProblem('classuncorr','noseed','m',800);
+  P = generateProblem('classuncorr','m',800);
 
 % Solve the complex L1 recovery problem:
 % minimize  ||z||_1  subject to  ||Az = b||_2 <= sigma
