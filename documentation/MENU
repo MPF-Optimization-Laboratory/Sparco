@@ -1,0 +1,16 @@
+Sparco
+    Home                [index.html]
+    License & Credits   [credits.html]
+    Contribute          [contribute.html]
+
+Guides
+    A Quick Tutorial    [guide_quick2.html]
+    Index of Problems   [methods.html]
+    Spot's Guide        [http://www.cs.ubc.ca/labs/scl/spot/]
+#    User's Guide (pdf)  [spotmanual.pdf]
+
+Examples
+    Building a Circulant Operator      [guide_circulant2.html]
+    Using Spot Containers              [guide_containers2.html]
+    Blurring and Deblurring an Image   [guide_convolution2.html]
+    Sparse Recovery                    [guide_sparserecovery2.html]

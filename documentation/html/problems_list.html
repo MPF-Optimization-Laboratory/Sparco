@@ -1,0 +1,1207 @@
+<html><a name="prob001"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob001</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob001</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob001</span>  FFT/Heaviside dictionary, HeaviSine signal.
+ 
+    <span class="helptopic">prob001</span> creates a problem structure.  The generated signal will
+    have length N = 1024.
+ 
+    The following optional argument calls are supported:
+ 
+    <span class="helptopic">prob001</span>('n',N,flags) is the same as above but with a signal length
+    N. The 'noseed' flag can be specified to suppress initialization of
+    the random number generators. Both the parameter pair and the flags
+    can be omitted.
+ 
+    Examples:
+    P = prob001;  % Creates the default 001 problem.
+ 
+    References:
+ 
+    [BuckDono:1995] J. Buckheit and D.L. Donoho, WaveLab and
+      reproducible research, in: A. Antoniadis (Ed.), Wavelets and
+      Statistics, Springer, Berlin, 1995. 
+ 
+    [ChenDonoSaun:1998] S.S. Chen and D.L. Donoho and M.A. Saunders,
+      Atomic Decomposition by Basis Pursuit, SIAM Journal on
+      Scientific Computing, 20:1 (1998), pp. 33-61.
+ 
+    [DonoJohn:1993] D.L. Donoho and I.M. Johnstone, Ideal spatial
+      adaptation by wavelet shrinkage, Biometrika, 81:3 (1994),
+      pp. 425-455.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob002"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob002</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob002</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob002</span>  Haar basis, block signal.
+ 
+    <span class="helptopic">prob002</span> creates a problem structure.  The generated signal will
+    have length N = 1024.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob002</span>('n',N,flags) is the same as above, but with a signal length
+    N. The 'noseed' flag can be specified to suppress initialization of
+    the random number generators. Both the parameter pair and flags can
+    be omitted.
+ 
+    Example:
+    P = prob002;  % Creates the default 002 problem.
+ 
+    References:
+ 
+    [BuckDono:1995] J. Buckheit and D.L. Donoho, WaveLab and
+      reproducible research, in: A. Antoniadis (Ed.), Wavelets and
+      Statistics, Springer, Berlin, 1995. 
+ 
+    [ChenDonoSaun:1998] S.S. Chen and D.L. Donoho and M.A. Saunders,
+      Atomic Decomposition by Basis Pursuit, SIAM Journal on
+      Scientific Computing 20:1 (1998), pp. 33-61.
+ 
+    [DonoJohn:1993] D.L. Donoho and I.M. Johnstone, Ideal spatial
+      adaptation by wavelet shrinkage, Biometrika, 81:3 (1994),
+      pp. 425-455.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.
+</div>
+   </body>
+</html><html><a name="prob003"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob003</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob003</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob003</span>  DCT/Dirac dictionary, cosine/spikes signal.
+ 
+    <span class="helptopic">prob003</span> creates a problem structure.  The generated signal will
+    have length N = 1024 with K = 120 random spikes and C = 2 cosine
+    components.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob003</span>('n',N,'k',K,'c',C,flags) is the same as above, but with a
+    signal length N, K random spikes and C cosine components. Set
+    C = [] to use the default cosine form
+ 
+    4.0 * cos(4*pi*t) + 2.0 * cos(12*pi*t)
+ 
+    for t = [0,1). The 'noseed' flag can be specified to suppress
+    initialization of the random number generators. Each of the
+    parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob003;  % Creates the default 003 problem.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob004"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob004</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob004</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob004</span>  FFT/Dirac dictionary, cosine/spikes signal Complex domain.
+ 
+    <span class="helptopic">prob004</span> creates a problem structure.  The generated signal will
+    have length N = 1024 with K = 120 random spikes and C = 2 sinusoid
+    components.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob004</span>('n',N,'k',K,'c',C,flags) is the same as above, but with a signal
+    length N, K random spikes and C sinusoid components. Set C = [] to
+    use the default sine form
+ 
+    4 * sin(t*4*pi) + sqrt(-9) * cos(t*12*pi)
+ 
+    for t = [0,1). The 'noseed' flag can be specified to suppress
+    initialization of the random number generators. Each of the
+    parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob004;  % Creates the default 004 problem.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob005"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob005</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob005</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob005</span>  DCT/Dirac dictionary, Gaussian measurements.
+ 
+    <span class="helptopic">prob005</span> creates a problem structure.  The generated signal will
+    have length N = 1024 and consist of K = 60 random spikes and 
+    C = 3 cosine components. The signal is measured using an M = 300
+    by N Gaussian ensemble.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob005</span>('m',M,'n',N,'k',K,'c',C,flags) is the same as above, but with
+    a signal length N, K random spikes and C cosine components and an M
+    by N measurement matrix. Set C = [] to use the default cosine form
+ 
+    2.0 * cos(2*pi*t) + 3.0 * cos(9*pi*t) - cos(20*pi*t)
+ 
+    for t = [0,1). The 'noseed' flag can be specified to suppress
+    initialization of the random number generators. Each of the
+    parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob005;  % Creates the default 005 problem.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob006"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob006</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob006</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob006</span>  Daubechies basis, Gaussian ensemble measurement basis,
+    piecewise cubic polynomial signal.
+ 
+    <span class="helptopic">prob006</span> creates a problem structure.  The generated signal will
+    consist of P = 5 cubic polynomial pieces and have length N = 2048.
+    The signal is measured using an M = 600 by N matrix with normally
+    distributed entries.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob006</span>('m',M,'n',N,'p',P,flags) is the same as above, but with a
+    measurement matrix of size M by N and a signal length of N,
+    consisting of P cubic polynomial pieces. The 'noseed' flag can be
+    specified to suppress initialization of the random number
+    generators. Each of the parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob006;  % Creates the default 006 problem.
+ 
+    References:
+ 
+    [CandRomb:2004a] E.J. Candes and J. Romberg, Practical signal
+      recovery from random projections, Wavelet Applications in
+      Signal and Image Processing XI, Proc. SPIE Conf. 5914., 2004.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob007"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob007</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob007</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob007</span>  Gaussian ensemble, sign/spikes signal.
+ 
+    <span class="helptopic">prob007</span> creates a problem structure.  The generated signal will
+    consist of K = 20 sign spikes and have length N = 2560. The
+    signal is measured using an M = 600 by N Gaussian ensemble with
+    orthogonal rows.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob007</span>('k',K,'m',M,'n',N,'scale',SCALE,flags) is the same as
+    above, but with a measurement matrix of size SCALE*M by SCALE*N
+    and a signal length of SCALE*N. The number of spikes in the signal
+    is set to SCALE*K. When scale is not an integer, all parameters are
+    rounded to the nearest integer after scaling. By default, the SCALE
+    is set to 1. The 'noseed' flag can be specified to suppress
+    initialization of the random number generators. Each of the
+    parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob007;  % Creates the default 007 problem.
+ 
+    References:
+ 
+    [l1magic] E.J. Candes and J. Romberg, l1-Magic, 2005
+      <a href="http://www.l1-magic.org/">http://www.l1-magic.org/</a> 
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob008"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob008</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob008</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob008</span>  Gaussian ensemble, sign/spikes signal (complex).
+ 
+    <span class="helptopic">prob008</span> creates a problem structure.  The generated signal will
+    consist of K = 20 sign spikes with a real and imaginary part and
+    have length N = 2560. The signal is measured using an M = 600 by N
+    Gaussian ensemble with orthogonal rows.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob008</span>('k',K,'m',M,'n',N,'scale',SCALE,flags) is the same as
+    above, but with a measurement matrix of size SCALE*M by SCALE*N
+    and a signal length of SCALE*N. The number of spikes in the signal
+    is set to SCALE*K. When scale is not an integer, all parameters are
+    rounded to the nearest integer after scaling. By default, the SCALE
+    is set to 1. The 'noseed' flag can be specified to suppress
+    initialization of the random number generators. Each of the
+    parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob008;  % Creates the default 008 problem.
+ 
+    References:
+ 
+    [l1magic] E.J. Candes and J. Romberg, l1-Magic, 2005
+      <a href="http://www.l1-magic.org/">http://www.l1-magic.org/</a> 
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob009"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob009</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob009</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob009</span>  Heavside basis, block signal.
+ 
+    <span class="helptopic">prob009</span> creates a problem structure.  The generated signal will
+    have length N = 128.
+ 
+    The following optional argument calls are supported:
+ 
+    <span class="helptopic">prob009</span>('n',N) is the same as above but with a signal length N.
+ 
+    Examples:
+    P = prob009;  % Creates the default 009 problem.
+ 
+    References:
+ 
+    [ChenDonoSaun:1998] S.S. Chen and D.L. Donoho and M.A. Saunders,
+      Atomic Decomposition by Basis Pursuit, SIAM Journal on
+      Scientific Computing 20:1 (1998), pp. 33-61.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob010"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob010</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob010</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob010</span>  Normalized Heaviside (unit columns), block signal.
+ 
+    <span class="helptopic">prob010</span> creates a problem structure.  The generated signal will
+    have length N = 1024.
+ 
+    The following optional argument calls are supported:
+ 
+    <span class="helptopic">prob010</span>('n',N) is the same as above but with a signal length N.
+ 
+    Examples:
+    P = prob010;  % Creates the default 010 problem.
+ 
+    References:
+ 
+    [ChenDonoSaun:1998] S.S. Chen and D.L. Donoho and M.A. Saunders,
+      Atomic Decomposition by Basis Pursuit, SIAM Journal on
+      Scientific Computing 20:1 (1998), pp. 33-61.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob011"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob011</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob011</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob011</span>  Gaussian ensemble, Gaussian spikes.
+ 
+    <span class="helptopic">prob011</span> creates a problem structure.  The generated signal will
+    consist of K = 32 sign spikes and have length N = 1024. The
+    signal is measured using an M = 256 by N Gaussian ensemble.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob011</span>('k',K,'m',M,'n',N,'scale',SCALE,flags) is the same as
+    above, but with a measurement matrix of size SCALE*M by SCALE*N
+    and a signal length of SCALE*N. The number of spikes in the signal
+    is set to SCALE*K. When scale is not an integer, all parameters are
+    rounded to the nearest integer after scaling. By default, the SCALE
+    is set to 1. The 'noseed' flag can be specified to suppress
+    initialization of the random number generators. Each of the
+    parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob011;  % Creates the default 011 problem.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob012"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob012</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob012</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob012</span>  Partial DCT, high dynamic-range
+ 
+    <span class="helptopic">prob012</span> creates a problem structure.  The generated signal is of
+    length N = 8192 with comprised of K = 300 nonzero entries that are
+    randomly distributed over the range [0,SCALE], where SCALE =
+    1000. The measurement matrix is a randomly-restricted DCT with M =
+    2000 rows.
+ 
+    PROB12('n',N,'m',M,'k',K,'scale',SCALE) is the same as above, but
+    specified by the optional paramters.  Examples: P = prob012; %
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob401"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob401</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob401</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob401</span>  Source separation example 1.
+ 
+    <span class="helptopic">prob401</span> creates a problem structure.  The generated signal will
+    consist of two mixed audio signals each two seconds long.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob401</span>('mixing',MIXING,flags) is the same as above, but with the
+    2 by 2 mixing matrix set to MIXING. The flags include the default
+    'show' and 'update' flags for plotting the problem illustrations.
+ 
+    Examples:
+    P = prob401;  % Creates the default 401 problem.
+ 
+    References:
+ 
+    [freesound] Database of Creative Commons licensed sounds,
+      <a href="http://freesound.iua.upf.edu/">http://freesound.iua.upf.edu/</a> 
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob402"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob402</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob402</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob402</span>  Source separation example 2.
+ 
+    <span class="helptopic">prob402</span> creates a problem structure.  The generated signal will
+    consist of two mixed audio signals from three sources. All
+    signals are two seconds long.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob402</span>('mixing',MIXING,flags) is the same as above, but with the
+    2 bv 3 mixing matrix set to MIXING. The flags include the default
+    'show' and 'update' flags for plotting the problem illustrations.
+ 
+    Examples:
+    P = prob402;  % Creates the default 402 problem.
+ 
+    References:
+ 
+    [freesound] Database of Creative Commons licensed sounds,
+      <a href="http://freesound.iua.upf.edu/">http://freesound.iua.upf.edu/</a> 
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob403"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob403</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob403</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob403</span>  Source separation example 3 - Starry Lenographer.
+ 
+    <span class="helptopic">prob403</span> creates a problem structure.  The generated signal will
+    consist of two mixed images from three sources; the cameraman,
+    Lena and a two-dimensional blurred spike array.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob403</span>('mixing',MIXING,flags) is the same as above, but with the
+    2 bv 3 mixing matrix set to MIXING. The flags include the default
+    'show' and 'update' flags for plotting the problem illustrations.
+ 
+    Examples:
+    P = prob403;  % Creates the default 403 problem.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob501"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob501</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob501</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob501</span>  Shepp-Logan phantom, partial Fourier along radial lines,
+          complex domain, total variation.
+ 
+    <span class="helptopic">prob501</span> creates a problem structure.  The generated signal will
+    consist of a N = 64 by N Shepp-Logan phantom. The signal is
+    measured along L = 22 radial lines in the frequency domain.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob501</span>('l',L,'n',N,flags) is the same as above, but with a
+    phantom of size N by N, measured along L radial lines. The
+    'noseed' flag can be specified to suppress initialization of
+    the random number generators. Each of the parameter pairs and
+    flags can be omitted.
+ 
+    Examples:
+    P = prob501;  % Creates the default 501 problem.
+ 
+    References:
+ 
+    [CandRombTao:2006b] E.J. Candes, J. Romberg and T. Tao, Robust
+      uncertainty principles: exact signal reconstruction from
+      highly incomplete frequency information, IEEE Transactions on
+      Information Theory, 52:2 (2006), pp. 489-509.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob502"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob502</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob502</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob502</span>  Angiogram, partial Fourier with sample mask, complex domain,
+    total variation.
+ 
+    <span class="helptopic">prob502</span> creates a problem structure.  The generated signal will
+    consist of an N = 100 by N synthetic angiogram image. The signal
+    is sampled at random locations in frequency domain generated
+    according to a probability density function.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob502</span>('n',N,flags) is the same as above, but with an angiogram
+    of size N by N. The 'noseed' flag can be specified to suppress
+    initialization of the random number generators. Both of the
+    parameter pair and flags can be omitted.
+ 
+    Examples:
+    P = prob502;  % Creates the default 502 problem.
+ 
+    References:
+ 
+    [LustDonoPaul:2007] M. Lustig, D.L. Donoho and J.M. Pauly,
+      Sparse MRI: The application of compressed sensing for rapid MR
+      imaging, Submitted to Magnetic Resonance in Medicine, 2007.
+ 
+    [sparsemri] M. Lustig, SparseMRI,
+      <a href="http://www.stanford.edu/~mlustig/SparseMRI.html">http://www.stanford.edu/~mlustig/SparseMRI.html</a>
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob503"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob503</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob503</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob503</span>  Shepp-Logan phantom, partial Fourier with sample mask,
+          complex domain, total variation.
+ 
+    <span class="helptopic">prob503</span> creates a problem structure.  The generated signal will
+    consist of a N = 256 by N Shepp-Logan phantom. The signal is
+    sampled at random locations in frequency domain generated
+    according to a probability density function.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob503</span>('n',N,flags) is the same as above, but with a
+    phantom of size N by N. The 'noseed' flag can be specified to
+    suppress initialization of the random number generators. Both
+    the parameter pair and flags can be omitted.
+ 
+    Examples:
+    P = prob503;  % Creates the default 503 problem.
+ 
+    References:
+ 
+    [LustDonoPaul:2007] M. Lustig, D.L. Donoho and J.M. Pauly,
+      Sparse MRI: The application of compressed sensing for rapid MR
+      imaging, Submitted to Magnetic Resonance in Medicine, 2007.
+ 
+    [sparsemri] M. Lustig, SparseMRI,
+      <a href="http://www.stanford.edu/~mlustig/SparseMRI.html">http://www.stanford.edu/~mlustig/SparseMRI.html</a>
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob601"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob601</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob601</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob601</span>  Daubechies basis, binary measurement basis, grayscale image.
+ 
+    <span class="helptopic">prob601</span> creates a problem structure. The generated signal will
+    consist of a 64 by 64 grayscale image of a soccer ball. The signal
+    is measured using an M by 4096 binary ensemble, with M = 3200.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob601</span>('m',M,'scale',SCALE,flags) is the same as above,
+    but with a an image size of 32 by 32 if SCALE = 1 and 64 by 64 if
+    SCALE = 2. The measurement matrix has a size M by (32*SCALE)^2.
+    Leaving M unspecified gives a measurement matrix of size
+    800*SCALE^2 by (32*SCALE)^2. The 'noseed' flag can be specified
+    to suppress initialization of the random number generators. Each
+    of the parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob601;  % Creates the default 601 problem.
+ 
+    References:
+ 
+    [TakhLaskWakiEtAl:2006] D. Takhar and J. N. Laska and M. Wakin
+      and M. Duarte and D. Baron and S. Sarvotham and K. K. Kelly
+      and R. G. Baraniuk, A new camera architecture based on
+      optical-domain compression, in Proceedings of the IS&amp;T/SPIE
+      Symposium on Electronic Imaging: Computational Imaging,
+      January 2006, Vol. 6065.
+ 
+    The soccerball image is taken from Wikipedia.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob602"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob602</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob602</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob602</span>  2D Haar basis, binary measurement, b/w image.
+ 
+    <span class="helptopic">prob602</span> creates a problem structure. The generated signal will
+    consist of a 64-by-64 black and white image of a soccer ball.
+    The signal is measured using an M-by-4096 binary ensemble, with
+    M = 3200.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob602</span>('m',M,'scale',SCALE,flags) is the same as above, but with
+    an image size of 32-by-32 if SCALE = 1, and 64-by-64 if SCALE = 2
+    (default).  The measurement matrix is of size M-by-(32*SCALE)^2.
+    Leaving M unspecified gives a measurement matrix of size
+    800*SCALE^2-by-(32*SCALE)^2. The 'noseed' flag can be specified to
+    suppress initialization of the random-number generators. Each of
+    the parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob602;  % Creates the default 602 problem.
+ 
+    References:
+ 
+    [TakhLaskWakiEtAl:2006] D. Takhar and J. N. Laska and M. Wakin
+      and M. Duarte and D. Baron and S. Sarvotham and K. K. Kelly
+      and R. G. Baraniuk, A new camera architecture based on
+      optical-domain compression, in Proceedings of the IS&amp;T/SPIE
+      Symposium on Electronic Imaging: Computational Imaging,
+      January 2006, Vol. 6065.
+ 
+    The soccerball image is taken from Wikipedia.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob603"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob603</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob603</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob603</span>  GPSR example: Smooth field.
+ 
+    <span class="helptopic">prob603</span> creates a problem structure.  The generated signal will
+    consist of an N = 64 by N image generated using the pwsmoothfield
+    function provided by earlier versions of GPSR. The signal is
+    measured using an M = 600 by N*N binary ensemble with unit norm
+    columns. Normally distributed noise with standard deviation
+    SIGMA = 0.001 is added to the measured signal.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob603</span>('m',M,'n',N,'sigma',SIGMA,flags) is the same as above,
+    but with a measurement matrix of size M by N*N, a signal length
+    of N and a noise level of SIGMA. The 'noseed' flag can be
+    specified to suppress initialization of the random number
+    generators. Each of the parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob603;  % Creates the default 603 problem.
+ 
+    References:
+ 
+    [FiguNowaWrig:2007] M. Figueiredo, R. Nowak and S.J. Wright,
+      Gradient projection for sparse reconstruction: Application to
+      compressed sensing and other inverse problems, Submitted,
+      2007. See also <a href="http://www.lx.it.pt/~mtf/GPSR">http://www.lx.it.pt/~mtf/GPSR</a>
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob701"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob701</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob701</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob701</span>  GPSR example: Daubechies basis, blurred photographer.
+ 
+    <span class="helptopic">prob701</span> creates a problem structure.  The generated signal will
+    consist of the 256 by 256 grayscale 'photographer' image. The
+    signal is blurred by convolution with an 8 by 8 blurring mask and
+    normally distributed noise with standard deviation SIGMA = 0.0055
+    is added to the final signal.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob701</span>('sigma',SIGMA,flags) is the same as above, but with the
+    noise level set to SIGMA. The 'noseed' flag can be specified to
+    suppress initialization of the random number generators. Both the
+    parameter pair and flags can be omitted.
+ 
+    Examples:
+    P = prob701;  % Creates the default 701 problem.
+ 
+    References:
+ 
+    [FiguNowaWrig:2007] M. Figueiredo, R. Nowak and S.J. Wright,
+      Gradient projection for sparse reconstruction: Application to
+      compressed sensing and other inverse problems, Submitted,
+      2007. See also <a href="http://www.lx.it.pt/~mtf/GPSR">http://www.lx.it.pt/~mtf/GPSR</a>
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob702"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob702</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob702</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob702</span>  GPSR example: Dirac basis, 2-dimensional sign/spikes signal.
+ 
+    <span class="helptopic">prob702</span> creates a problem structure.  The generated signal will
+    consist of N = 64 by N image with +1/-1 valued impulse noise at
+    each pixel occurring with probability P = 0.01. The signal is
+    blurred by convolution with an 8 by 8 blurring mask and normally
+    distributed noise with standard deviation SIGMA = 0.01 is added
+    to the final signal.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob702</span>('n',N,'p',P,'sigma',SIGMA,flags) is the same as above, but
+    with signal size N by N, spikes ocurring with probability P and
+    an additive noise level of SIGMA. The 'noseed' flag can be specified
+    to suppress initialization of the random number generators. Each of
+    the parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob702;  % Creates the default 702 problem.
+ 
+    References:
+ 
+    [FiguNowaWrig:2007] M. Figueiredo, R. Nowak and S.J. Wright,
+      Gradient projection for sparse reconstruction: Application to
+      compressed sensing and other inverse problems, Submitted,
+      2007. See also <a href="http://www.lx.it.pt/~mtf/GPSR">http://www.lx.it.pt/~mtf/GPSR</a>
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob703"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob703</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob703</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob703</span>  Curvelet basis, scratched fingerprint image.
+ 
+    <span class="helptopic">prob703</span> creates a problem structure.  The generated signal will
+    consist of an N = 128 by N grayscale image of a fingerprint with
+    data missing along straight lines.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob703</span>('n',N,flags) is the same as above, but with an image size
+    of N by N. The 'noseed' flag can be specified to suppress
+    initialization of the random number generators. Both the
+    parameter pair and flags can be omitted.
+ 
+    Examples:
+    P = prob703;  % Creates the default 703 problem.
+ 
+    References:
+ 
+    [MaltMaioJainPrab:2003] D. Maltoni, D. Maio, A.K. Jain and
+      S. Prabhakar, Handbook of Fingerprint Recognition, Springer,
+      New York, 2003. See: <a href="http://bias.csr.unibo.it/fvc2000/">http://bias.csr.unibo.it/fvc2000/</a>
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob801"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob801</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob801</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob801</span> Classification of uncorrupted images : Faces dictionnary, Face
+ signal
+ 
+    <span class="helptopic">prob801</span> creates a problem structure. The generated signal will
+    consist of a 192 by 168 grayscale image of a face. The signal is
+    down-sampled to a M by 1 signal with M = 1400. It has a sparse
+    representation in the dictionnary of the training data (N images from
+    each of the 8 sets).
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob801</span>('m',M,'n',N,flags) is the same as above, but with a
+    down-sampling to M and a dictionnary of N images from each of the 8
+    sets. The 'noseed' flag can be specified to suppress initialization of 
+    the random-number generators. Each of the parameter pairs and flags 
+    can be omitted.
+ 
+    Examples:
+    P = prob801;  % Creates the default 801 problem.
+ 
+    References:
+ 
+    [ElhaVida:2011] E. Elhamifar and R. Vidal, Robust Classification using
+        Structured Sparse Representation, Computer Vision and Pattern 
+        Recognition (CVPR), 2011 IEEE Conference on, pp. 1873-1879.
+    
+    [LeeHoKrie:2005] K.C. Lee and J. Ho and D. Kriegman, Acquiring Linear 
+        Subspaces for Face Recognition under Variable Lighting, IEEE Trans. 
+        Pattern Anal. Mach. Intelligence, 2005, 27(5), pp. 684-698.</pre></div><!--after help -->
+   </body>
+</html><html><a name="prob802"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob802</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob802</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob802</span> Classification of corrupted images : Faces dictionnary, Face
+ signal
+ 
+    <span class="helptopic">prob802</span> creates a problem structure. The generated signal will
+    consist of a 192 by 168 grayscale image of a face. RHO percentage of
+    randomly chosen pixels are corrupted using i.i.d values drawn from a
+    uniform distribution in the range of the image pixel values. Then the
+    signal is down-sampled to a M by 1 signal with M = 1400. It has a 
+    sparse representation in the dictionnary of the training data (N images
+    from each of the 8 sets).
+ 
+    The following optional arguments are supported:
+ 
+    PROB801('m',M,'n',N,'rho',RHO,flags) is the same as above, but with a
+    corruption of RHO percent, a down-sampling to M and a dictionnary of N
+    images from each of the 8 sets. The 'noseed' flag can be specified to
+    suppress initialization of the random-number generators. Each of the 
+    parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob801;  % Creates the default 801 problem.
+ 
+    References:
+ 
+    [ElhaVida:2011] E. Elhamifar and R. Vidal, Robust Classification using
+        Structured Sparse Representation, Computer Vision and Pattern 
+        Recognition (CVPR), 2011 IEEE Conference on, pp. 1873-1879.
+    
+    [LeeHoKrie:2005] K.C. Lee and J. Ho and D. Kriegman, Acquiring Linear 
+        Subspaces for Face Recognition under Variable Lighting, IEEE Trans. 
+        Pattern Anal. Mach. Intelligence, 2005, 27(5), pp. 684-698.</pre></div><!--after help -->
+   </body>
+</html><html><a name="prob901"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob901</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob901</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob901</span>  Curvelet basis, seismic image with missing traces.
+ 
+    <span class="helptopic">prob901</span> creates a problem structure.  The generated signal will
+    consist of a 250 seismic traces of length 256 combined into an
+    image of size 256 by 250. In the observed signal, a fraction
+    P = 0.35 of the traces are missing.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob901</span>('p',P,flags) is the same as above, with with a fraction
+    P of all traces missing. The 'noseed' flag can be specified to
+    suppress initialization of the random number generators. Both
+    the parameter pair and flags can be omitted.
+ 
+    Examples:
+    P = prob901;  % Creates the default 901 problem.
+ 
+    References:
+ 
+    [HennHerr:2005] G. Hennenfent and F.J. Herrmann,
+      Sparseness-constrained data continuation with frames:
+      Applications to missing traces and aliased  signals in 2/3-D,
+      Proceedings of the SEG International Exposition and 75th
+      Annual Meeting, 2005.
+ 
+    [HennHerr:2006] G. Hennenfent and F.J. Herrmann, Application of
+      stable signal recovery to seismic interpolation, Proceedings
+      of the SEG International Exposition and 76th Annual Meeting,
+      2006.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob902"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob902</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob902</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob902</span>  Jittered sampling of cosine wave
+ 
+    <span class="helptopic">prob902</span> creates a problem structure.  The generated signal will
+    have length N = 1000 and consists of a cosine wave that is
+    sparse in the discrete cosine transform. The signal jitter
+    sampled; i.e. the sample locations are based on evenly spaced
+    intervals GAMMA apart, but are perturbed by random amounts in
+    the interval [-XI/2, XI/2], with default XI = GAMMA = 5.
+ 
+    The following optional argument calls are supported:
+ 
+    <span class="helptopic">prob902</span>('k,',K,'n',N,'gamma',GAMMA,'xi',XI) is the same as
+    above but with a signal of length N having K non-zeros in the
+    discrete cosine domain. GAMMA gives the spacing of the regular
+    grid and XI prescribes the random perturbation as above.
+ 
+    Examples:
+    P = prob902;  % Creates the default 902 problem.
+ 
+    References:
+ 
+    [HennHerr:2007a] G. Hennenfent and F.J. Herrmann, Simply
+       denoise: wavefield reconstruction via coarse nonuniform
+       sampling, Technical Report, UBC Earth &amp; Ocean Sciences,
+       August 2007.
+ 
+    [HennHerr:2007b] G. Hennenfent and F.J. Herrmann, Random
+       sampling: new insights into the reconstruction of
+       coarsely-sampled wavefields, SEG International Exposition
+       and 77th Annual Meeting, 2007.
+ 
+    [HennHerr:2007c] G. Hennenfent and F.J. Herrmann, Irregular
+       sampling: from aliasing to noise, EAGE 69th Conference &amp;
+       Exhibition, 2007.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="prob903"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.prob903</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.prob903</div>
+      <div class="helptext"><pre><!--helptext --> <span class="helptopic">prob903</span>  Sparse spike deconvolution.
+ 
+    <span class="helptopic">prob903</span> creates a problem structure.  The generated signal will
+    have length N = 1024 and consist of a sparse spike train of K = 12
+    spikes convolved with a truncated second derivative of a Gaussian.
+ 
+    The following optional arguments are supported:
+ 
+    <span class="helptopic">prob903</span>('k',K,'n',N,flags) is the same as above, but with signal
+    length N and a spike train consisting of K spikes. The 'noseed'
+    flag can be specified to suppress initialization of the random
+    number generators. Each of the parameter pairs and flags can be
+    omitted.
+ 
+    Examples:
+    P = prob903;  % Creates the default 903 problem.
+ 
+    References:
+ 
+    [DossMall:2005] Sparse spike deconvolution with minimum scale. In
+      Proceedings of Signal Processing with Adaptive Sparse
+      Structured Representations, pages 123-126, Rennes, France,
+      November 2005.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="probMondrian"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.probMondrian</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.probMondrian</div>
+      <div class="helptext"><pre><!--helptext --> PROB055  Mondrian.
+ 
+    PRELIMINARY! DON'T USE.
+ 
+    Examples:
+    P = prob055;  % Creates the default 055 problem.
+ 
+    References:
+ 
+    [TsaiDono:2006] Y. Tsaig and D.L. Donoho, Extensions of
+      compressed sensing, Signal Process., 86:3 (2006), pp. 549-571.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html><html><a name="probSparseman"></a>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+      <link rel="stylesheet" href="file:////cs/local/generic/lib/pkg/matlab-7.14/toolbox/matlab/helptools/private/helpwin.css">
+      <title>MATLAB File Help: sparco.problems.probSparseman</title>
+   </head>
+   <body>
+      <!--Single-page help-->
+      
+      <div class="title">sparco.problems.probSparseman</div>
+      <div class="helptext"><pre><!--helptext --> PROB052  Daubechies basis, "Man peeling orange" image.
+ 
+    PROB052 creates a problem structure.  The generated signal will
+    consist of N = 1024 by N grayscale image whose wavelet
+    coefficients are sparsified to retain only the P * N*N = 25,000
+    largest components. The image is randomly sampled at K = 96,000
+    points.
+ 
+    The following optional arguments are supported:
+ 
+    PROB052('k',K,'p',P,flags) is the same as above, but with a
+    K random measurements and preservation of a fraction P of the
+    largest wavelet coefficients. The 'noseed' flag can be specified
+    to suppress initialization of the random number generators. Each
+    of the parameter pairs and flags can be omitted.
+ 
+    Examples:
+    P = prob052;  % Creates the default 052 problem.
+ 
+    References:
+ 
+    [CandRomb:2006] E.J. Candes and J. Romber, Sparsity and
+      incoherence in compressive sampling, Submitted for
+      publication, November, 2006.
+ 
+    
+ 
+ MATLAB SPARCO Toolbox.</pre></div><!--after help --><!--seeAlso--><div class="footerlinktitle">See also</div><div class="footerlink"> <a href="matlab:helpwin generateProblem">generateProblem</a>.</div>
+   </body>
+</html>
+
+
+
