@@ -7,23 +7,20 @@ pathstr = [pathstr filesep 'spgl1'];
 addpath(pathstr);
 
 % Generate the problem of classification of uncorrupted images 
-  P = generateProblem('classuncorr','m',800);
+  P = generateProblem('classcorr','m',800,'rho',0.5);
 
 % Solve the complex L1 recovery problem:
 % minimize  ||z||_1  subject to  ||Az = b||_2 <= sigma
-  spglopts = spgSetParms('optTol',1e-4);
+  spglopts = spgSetParms('optTol',1e-4,'verbosity',0);
   tau = 0;   % Initial one-norm of solution
-  sigma = 1.9; % Go for a basis pursuit solution
+  sigma = 5; % Go for a basis pursuit solution
   z = spgl1(P.A, P.b, tau, sigma, [], spglopts);
   
 % Remove spgl1 folder from path
   rmpath(pathstr)
   
 % Find out from which set the solution is the closest
-  sol.min = 1000;
-  sol.arg = 0;
-  opt     = P.A * z;
-  n       = P.B.n / 8;
+  n       = (P.B.n-32256) / 8;
   A       = P.A;
   
   for i=1:8
