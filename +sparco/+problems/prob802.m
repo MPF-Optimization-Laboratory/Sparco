@@ -1,5 +1,5 @@
 function data = prob802( varargin )
-%PROB802 Classification of corrupted images : Faces dictionnary, Face
+%PROB802 Classification of corrupted images : Faces + Dirac dictionnary, Face
 %signal
 %
 %   PROB802 creates a problem structure. The generated signal will
@@ -32,6 +32,7 @@ function data = prob802( varargin )
 %       Pattern Anal. Mach. Intelligence, 2005, 27(5), pp. 684-698.
 %
 %   See also GENERATEPROBLEM.
+
 import spot.utils.* 
 import sparco.*
 import sparco.tools.*
@@ -73,7 +74,9 @@ for i=1:8
         imgsets(:,(i-1)*n+j) = img;
     end
 end
-B = opMatrix(imgsets);
+B1 = opMatrix(imgsets);
+B2 = opDirac(32256);
+B = opDictionary(B1,B2);
 M = opRestriction(32256,idx);
 
 % Set up the problem
