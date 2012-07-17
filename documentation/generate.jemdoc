@@ -1,6 +1,22 @@
 # jemdoc: menu{MENU}{generate.html}, notime
-= Sparco -- Generating a problem
+= Generating problems
 
+== Contents
+
+~~~
+{}{raw}
+<div><ul>
+<li><a href="#1">Syntax</a></li>
+<li><a href="#2">Problem's documentation</a></li>
+<li><a href="#3">Flags</a></li>
+<li><a href="#4">List of problems</a></li>
+</ul></div>
+~~~
+
+~~~
+{}{raw}
+<a name="1"></a>
+~~~
 == Syntax
 The gateaway function generateProblem is the single interface to all
 problems in the collection. Each problem can be instanciated by calling
@@ -27,10 +43,14 @@ a DCT-Dirac dictionnary. Two versions of this problem can be generated as follow
 #includeraw{sample_generate.html}
 ~~
 
+~~~
+{}{raw}
+<a name="2"></a>
+~~~
 == Problem's documentation
 
 Documentation for each problem, including a list of available keyword-value pairs,
-the problem source, and relevant citations, can be retrieved [problems2.html here]
+the problem source, and relevant citations, can be retrieved [problems.html here]
 or with the call
 
 ~~~
@@ -38,12 +58,22 @@ or with the call
 generateProblem(id, 'help');
 ~~~
 
+
+~~~
+{}{raw}
+<a name="3"></a>
+~~~
 == Flags
 
 Other commonly supported flags are +'show'+ for displaying example figures 
 associated with the problem and +'noseed'+ to suppress the initialization of the 
 random number generators.
 
+
+~~~
+{}{raw}
+<a name="4"></a>
+~~~
 == List of problems
 
 A full list of of all available problem identifiers in the collection can be 
