@@ -52,7 +52,7 @@ info.name   = 'yinyang';
 if opts.getname, data = info.name; return; end;
 
 % Initialize random number generators
-if (~parm.noseed), randn('state',0); rand('state',0); end;
+if (~parm.noseed), rng('default'); rng(0); end;
 
 % Set up operators
 M = (2*round(rand(m,n*n))-1)/sqrt(n*n);

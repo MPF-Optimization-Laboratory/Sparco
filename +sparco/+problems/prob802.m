@@ -49,7 +49,7 @@ info.name   = 'classcorr';
 if opts.getname, data = info.name; return; end;
 
 % Initialize random number generators
-if ~parm.noseed, rng(0); end
+if ~parm.noseed, rng('default'); rng(0); end
 
 % Set up the data
 idx = randperm(32256); idx = idx(1:m);

@@ -50,7 +50,7 @@ info.name   = 'p3poly';
 if opts.getname, data = info.name; return; end;
 
 % Initialize random number generators
-if ~parm.noseed, randn('state',0); rand('state',0); end
+if ~parm.noseed, rng('default'); rng(0); end
 
 % Signal: random piecewise cubic polynomial
 idx = 1 + round(sort([0,rand(1,p-1),1]) * n);

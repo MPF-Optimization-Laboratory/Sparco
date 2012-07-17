@@ -37,7 +37,7 @@ info.name   = 'dcthdr';
 if opts.getname, data = info.name; return; end
 
 % Initialize random number generators
-randn('state',0); rand('state',0);
+rng('default'); rng(0);
 
 % Generate signal
 p     = randperm(n); p = p(1:k);

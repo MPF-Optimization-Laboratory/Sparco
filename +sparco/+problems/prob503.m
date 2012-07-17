@@ -50,7 +50,7 @@ info.name   = 'phantom2';
 if opts.getname, data = info.name; return; end;
 
 % Initialize random number generators
-if (~parm.noseed), randn('state',0); rand('twister',2000); end;
+if (~parm.noseed), rng('default'); rng(0); end;
 
 % Set up the data
 pdf  = genPDF([n,n],5,0.33,2,0.1,0);

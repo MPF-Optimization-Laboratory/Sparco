@@ -52,7 +52,7 @@ info.name   = 'sgnspike';
 if opts.getname, data = info.name; return; end
 
 % Initialize random number generators
-if ~parm.noseed, randn('state',0); rand('state',0); end
+if ~parm.noseed, rng('default'); rng(0); end
 
 % Determine problem sizes
 k = max(1,round(k * scale));

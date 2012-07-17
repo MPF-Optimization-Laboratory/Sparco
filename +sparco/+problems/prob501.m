@@ -49,7 +49,7 @@ info.name   = 'phantom1';
 if opts.getname, data = info.name; return; end
 
 % Initialize random number generators
-if ~parm.noseed, randn('state',0); rand('state',0); end
+if ~parm.noseed, rng('default'); rng(0); end
 
 % Set up the data
 [Mc,Mh] = RadialLines(n,l);

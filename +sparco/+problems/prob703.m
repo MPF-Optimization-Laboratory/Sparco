@@ -45,7 +45,7 @@ info.name   = 'finger';
 if opts.getname, data = info.name; return; end;
 
 % Initialize random number generators
-if (~parm.noseed), randn('state',0); rand('state',0); end;
+if (~parm.noseed), rng('default'); rng(0); end;
 
 % Set up the data
 i = 4; j = 8;

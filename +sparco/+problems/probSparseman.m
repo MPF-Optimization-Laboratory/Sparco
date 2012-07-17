@@ -42,7 +42,7 @@ k           = getOption(parm,'k',96000); % Number of observations
 p           = getOption(parm,'p',[]);    % Fraction of coefficients
 
 % Initialize random number generators
-if (~parm.noseed), randn('state',0); rand('state',3); end;
+if (~parm.noseed), rng('default'); rng(0); end;
 
 % Load the image and get wavelet coefficients
 filename= sprintf('%sprob052_man.bmp', opts.datapath);

@@ -48,7 +48,7 @@ info.name   = 'spiketrn';
 if opts.getname, data = info.name; return; end;
 
 % Initialize random number generators
-if (~parm.noseed), randn('state',10); rand('state',11); end;
+if (~parm.noseed), rng('default'); rng(0); end;
 
 % Set up the data
 x0         = zeros(n,1);
