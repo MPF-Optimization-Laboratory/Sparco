@@ -19,7 +19,7 @@ function data = prob802( varargin )
 %   parameter pairs and flags can be omitted.
 %
 %   Examples:
-%   P = prob801;  % Creates the default 801 problem.
+%   P = prob802;  % Creates the default 802 problem.
 %
 %   References:
 %
