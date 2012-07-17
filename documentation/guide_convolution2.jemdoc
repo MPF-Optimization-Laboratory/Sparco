@@ -1,4 +1,0 @@
-# jemdoc: menu{MENU}{guide_convolution2.html}, notime
-= Blurring and Deblurring an Image Using opConvolve
-
-#includeraw{matlab_published/html/guide_convolution.html}

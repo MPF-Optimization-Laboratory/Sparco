@@ -1,0 +1,19 @@
+# jemdoc: menu{MENU}{index.html}, notime
+= Sparco -- A toolbox for testing sparse reconstruction algorithms 
+[http://www.cs.ubc.ca/~ewout78 Ewout van den Berg] and [http://www.cs.ubc.ca/~mpf Michael P. Friedlander]
+
+Sparco is a suite of [problems.html problems] for testing and benchmarking algorithms for sparse signal reconstruction. It is also an environment for creating new test problems, and a suite of standard linear operators is provided by [http://www.cs.ubc.ca/labs/scl/spot/ Spot's toolbox] from which new problems can be assembled. Sparco is implemented entirely in Matlab and needs Spot operators to work. It is automatically downloaded using the sparcoSetup method if it is not in your path. (A few optional test problems are based on the [http://www.curvelet.org/ CurveLab] toolbox, which can be installed separately.)
+
+At the core of the sparse recovery problem is the linear system 
+
+\(
+Ax + r = b
+\)
+
+where $A$ is an m-by-n linear operator and the m-vector $b$ is the observed signal. The goal is to find a sparse n-vector $x$ such that $r$ is small in norm.
+
+== Download
+
+Version 1.3, July 21, 2012:
++[sparco-1.3.zip sparco-1.3.zip]+
+

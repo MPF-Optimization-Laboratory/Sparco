@@ -1,0 +1,4 @@
+# jemdoc: menu{MENU}{guide_problem2.html}, notime
+= Problem structure
+
+#includeraw{matlab_published/html/guide_problem.html }

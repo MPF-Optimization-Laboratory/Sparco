@@ -1,0 +1,38 @@
+# jemdoc: menu{MENU}{credits.html}, notime
+= Sparco -- License & Credits
+
+== License
+
+Sparco is free software, and is distributed under the
+[http://www.gnu.org/copyleft/gpl.html GNU Public License].  You are
+free to modify and redistribute the software.
+
+== Credits
+
+We would be delighted to hear from you if you find Sparco useful, or if you have any suggestions, contributions, or bug reports. Please send these to
+
+   - [mpf@cs.ubc.ca Michael P. Friedlander]
+   - [ewout78@cs.ubc.ca Ewout van den Berg] 
+
+This research is supported in part by an [http://www.nserc.gc.ca/index.htm NSERC] Discovery Grant and by an NSERC Collaborative Research and Development Grant (334810-05) that funds the [http://slim.eos.ubc.ca/module=articles&func=display&catid=43&aid=100 DNOISE] project. 
+
+== Referencing Sparco
+
+When referencing Sparco, please cite the following:
+
+~~~
+{}{}
+
+@techreport{sparco:2007,
+  Author = {E. {van den} Berg and M. P. Friedlander
+            and G. Hennenfent and F. Herrmann
+            and R. Saab and {\"O}. Y{\i}lmaz},
+  Institution = {Dept. Computer Science},
+  Address = {University of British Columbia, Vancouver},
+  Number = {TR-2007-20},
+  Title = {Sparco: {A} testing framework for sparse reconstruction},
+  Month = {October},
+  Year = {2007}
+ }
+
+~~~

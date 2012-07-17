@@ -83,7 +83,7 @@ if opts.update || opts.show
   updateFigure(opts, info.fig{1}.title, info.fig{1}.filename)
        
   figure(opts.figno); opts.figno = opts.figno + opts.figinc;
-  plot(data.op.Haar' * data.signal,'b-');
+  plot(data.B' * data.signal,'b-');
   updateFigure(opts, info.fig{2}.title, info.fig{2}.filename)
 
   if opts.update

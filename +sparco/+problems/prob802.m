@@ -30,7 +30,8 @@ function data = prob802( varargin )
 %   [LeeHoKrie:2005] K.C. Lee and J. Ho and D. Kriegman, Acquiring Linear 
 %       Subspaces for Face Recognition under Variable Lighting, IEEE Trans. 
 %       Pattern Anal. Mach. Intelligence, 2005, 27(5), pp. 684-698.
-
+%
+%   See also GENERATEPROBLEM.
 import spot.utils.* 
 import sparco.*
 import sparco.tools.*
@@ -128,13 +129,11 @@ if opts.update || opts.show
       imagesc(img); colormap gray; axis square;
       updateFigure(opts, info.fig{i+1}.title, info.fig{i+1}.filename);
   end
-%   % Output thumbnail
-%   if opts.update
-%      P = ones(128,128,3);
-%      P = thumbPlot(P,1:n,data.signal,[0,0,1]);
-%      P = (P(1:2:end,:,:) + P(2:2:end,:,:)) / 2;
-%      P = (P(:,1:2:end,:) + P(:,2:2:end,:)) / 2;
-%      thumbwrite(P, info.thumb, opts);
-%   end
+  
+  % Output thumbnail
+  if opts.update
+    P =  scaleImage(reshape(data.signal,192,168),64,64);
+    thumbwrite(P, info.thumb, opts);
+  end
 end
 

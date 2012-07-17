@@ -1,0 +1,17 @@
+# jemdoc: menu{MENU}{links.html}, notime
+= Sparco -- Related Links
+
+L1 solvers
+- [http://www.caam.rice.edu/~optimization/L1/fpc/ FPC]: Fixed-point continuation
+- [http://www.lx.it.pt/~mtf/GPSR GPSR]: Gradient projection for sparse reconstruction 
+- [http://www.stanford.edu/~boyd/l1_ls l1_ls]: Simple Matlab Solver for l1-regularized Least Squares Problems 
+- [http://www.cs.ubc.ca/labs/scl/spgl1 SPGL1]: A solver for large-scale sparse reconstruction 
+
+Related software:
+- [http://www.cs.ubc.ca/labs/scl/spot/ Spot]
+- [http://sparselab.stanford.edu/ SparseLab]
+- [http://www.stanford.edu/~mlustig/SparseMRI.html SparseMRI]
+- [http://www.curvelet.org/ CurveLab]
+
+Resources:
+- [http://www.dsp.ece.rice.edu/cs Compressed sensing resources]

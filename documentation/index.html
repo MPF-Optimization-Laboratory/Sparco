@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<title>Sparco &ndash; A toolbox for testing sparse reconstruction algorithms </title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-content">
+<div id="toptitle">
+<h1>Sparco &ndash; A toolbox for testing sparse reconstruction algorithms </h1>
+<div id="subtitle"><a href="http://www.cs.ubc.ca/~ewout78">Ewout van den Berg</a> and <a href="http://www.cs.ubc.ca/~mpf">Michael P. Friedlander</a></div>
+</div>
+<p>Sparco is a suite of <a href="problems.html">problems</a> for testing and benchmarking algorithms for sparse signal reconstruction. It is also an environment for creating new test problems, and a suite of standard linear operators is provided by <a href="http://www.cs.ubc.ca/labs/scl/spot/">Spot&rsquo;s toolbox</a> from which new problems can be assembled. Sparco is implemented entirely in Matlab and needs Spot operators to work. It is automatically downloaded using the sparcoSetup method if it is not in your path. (A few optional test problems are based on the <a href="http://www.curvelet.org/">CurveLab</a> toolbox, which can be installed separately.)</p>
+<p>At the core of the sparse recovery problem is the linear system </p>
+
+<img class="eqwl" src="eqs/4121384075873169243-130.png" alt=" Ax + r = b " />
+<br /><p>where <img class="eq" src="eqs/8320025024-130.png" alt="A" style="vertical-align: -0px" /> is an m-by-n linear operator and the m-vector <img class="eq" src="eqs/12544037731-130.png" alt="b" style="vertical-align: -1px" /> is the observed signal. The goal is to find a sparse n-vector <img class="eq" src="eqs/15360046201-130.png" alt="x" style="vertical-align: -1px" /> such that <img class="eq" src="eqs/14592043891-130.png" alt="r" style="vertical-align: -1px" /> is small in norm.</p>
+<h2>Download</h2>
+<p>Version 1.3, July 21, 2012:
+<tt><a href="sparco-1.3.zip">sparco-1.3.zip</a></tt></p>
+<div id="footer">
+<div id="footer-text">
+Page last updated on 2012-07-16
+</div>
+</div>
+</td>
+<td id="layout-menu">
+<div class="menu-category">Sparco</div>
+<div class="menu-item"><a href="index.html" class="current">Home</a></div>
+<div class="menu-item"><a href="credits.html">License&nbsp;&amp;&nbsp;Credits</a></div>
+<div class="menu-item"><a href="links.html">Related&nbsp;Links</a></div>
+<div class="menu-category">Guides</div>
+<div class="menu-item"><a href="generate.html">Generating&nbsp;problems</a></div>
+<div class="menu-item"><a href="guide_problem2.html">Problem&nbsp;structure</a></div>
+<div class="menu-item"><a href="problems.html">Index&nbsp;of&nbsp;Problems</a></div>
+<div class="menu-item"><a href="http://www.cs.ubc.ca/labs/scl/spot/">Spot&rsquo;s&nbsp;Guide</a></div>
+<div class="menu-category">Examples</div>
+<div class="menu-item"><a href="guide_circulant2.html">Building&nbsp;a&nbsp;Circulant&nbsp;Operator</a></div>
+<div class="menu-item"><a href="guide_containers2.html">Using&nbsp;Spot&nbsp;Containers</a></div>
+<div class="menu-item"><a href="guide_convolution2.html">Blurring&nbsp;and&nbsp;Deblurring&nbsp;an&nbsp;Image</a></div>
+<div class="menu-item"><a href="guide_sparserecovery2.html">Sparse&nbsp;Recovery</a></div>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-4736412-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

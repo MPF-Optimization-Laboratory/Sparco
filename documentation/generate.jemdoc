@@ -1,0 +1,70 @@
+# jemdoc: menu{MENU}{generate.html}, notime
+= Sparco -- Generating a problem
+
+== Syntax
+The gateaway function generateProblem is the single interface to all
+problems in the collection. Each problem can be instanciated by calling
+generateProblem with a unique problem-identifier number, optional flags
+and keyword-value pairs:
+
+~~~
+{}{}
+P = generateProblem(id, [[key1,value1 | flag1],...]);
+~~~
+
+This command has a single output structure P which encodes all parts of 
+the instanciated problem. The details of the problem structure are discussed
+[guide_problem2.html here]. The optional keywords-value pairs control various
+aspects of the problem formulation, such as the problem size or the noise level.
+In this way, a single problem definition can yield a whole family related problem
+instances.
+
+For instance, problem five generates a signal of length /n/ from a few atoms in
+a DCT-Dirac dictionnary. Two versions of this problem can be generated as follows :
+
+~~
+{}{}
+#includeraw{sample_generate.html}
+~~
+
+== Problem's documentation
+
+Documentation for each problem, including a list of available keyword-value pairs,
+the problem source, and relevant citations, can be retrieved [problems2.html here]
+or with the call
+
+~~~
+{}{}
+generateProblem(id, 'help');
+~~~
+
+== Flags
+
+Other commonly supported flags are +'show'+ for displaying example figures 
+associated with the problem and +'noseed'+ to suppress the initialization of the 
+random number generators.
+
+== List of problems
+
+A full list of of all available problem identifiers in the collection can be 
+retrieved via the command 
+
+~~~
+{}{}
+pList = generateProblem('list');
+~~~
+
+This is useful, for example, when benchmarking an algorith on a series of test problems
+or for checking which problem identifiers are valid. The code fragment
+
+~~~
+{}{}
+pList = generateProblem('list');
+for id = pList
+    P = generateProblem(id);
+    disp(P.info.title);
+end
+~~~
+
+prints the names of every problem in the collection. The field +info.title+
+is common to all problem structures.

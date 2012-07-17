@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<title>Sparco &ndash; Generating a problem</title>
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-content">
+<div id="toptitle">
+<h1>Sparco &ndash; Generating a problem</h1>
+</div>
+<h2>Syntax</h2>
+<p>The gateaway function generateProblem is the single interface to all
+problems in the collection. Each problem can be instanciated by calling
+generateProblem with a unique problem-identifier number, optional flags
+and keyword-value pairs:</p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+P = generateProblem(id, [[key1,value1 | flag1],...]);
+</pre></div></div>
+<p>This command has a single output structure P which encodes all parts of 
+the instanciated problem. The details of the problem structure are discussed
+<a href="guide_problem2.html">here</a>. The optional keywords-value pairs control various
+aspects of the problem formulation, such as the problem size or the noise level.
+In this way, a single problem definition can yield a whole family related problem
+instances.</p>
+<p>For instance, problem five generates a signal of length <i>n</i> from a few atoms in
+a DCT-Dirac dictionnary. Two versions of this problem can be generated as follows :</p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+P1 = generateProblem(5);            <span class="comment">% Signal of length n = 1024 (default)</span>
+P1 = generateProblem(5,<span class="string">'n'</span>,2048);   <span class="comment">% Signal of length n = 2048</span>
+</pre></div></div>
+<h2>Problem&rsquo;s documentation</h2>
+<p>Documentation for each problem, including a list of available keyword-value pairs,
+the problem source, and relevant citations, can be retrieved <a href="problems2.html">here</a>
+or with the call</p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+generateProblem(id, 'help');
+</pre></div></div>
+<h2>Flags</h2>
+<p>Other commonly supported flags are <tt>&rsquo;show&rsquo;</tt> for displaying example figures 
+associated with the problem and <tt>&rsquo;noseed&rsquo;</tt> to suppress the initialization of the 
+random number generators.</p>
+<h2>List of problems</h2>
+<p>A full list of of all available problem identifiers in the collection can be 
+retrieved via the command </p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+pList = generateProblem('list');
+</pre></div></div>
+<p>This is useful, for example, when benchmarking an algorith on a series of test problems
+or for checking which problem identifiers are valid. The code fragment</p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+pList = generateProblem('list');
+for id = pList
+    P = generateProblem(id);
+    disp(P.info.title);
+end
+</pre></div></div>
+<p>prints the names of every problem in the collection. The field <tt>info.title</tt>
+is common to all problem structures</p>
+<div id="footer">
+<div id="footer-text">
+Page last updated on 2012-07-16
+</div>
+</div>
+</td>
+<td id="layout-menu">
+<div class="menu-category">Sparco</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="credits.html">License&nbsp;&amp;&nbsp;Credits</a></div>
+<div class="menu-item"><a href="links.html">Related&nbsp;Links</a></div>
+<div class="menu-category">Guides</div>
+<div class="menu-item"><a href="generate.html" class="current">Generating&nbsp;problems</a></div>
+<div class="menu-item"><a href="guide_problem2.html">Problem&nbsp;structure</a></div>
+<div class="menu-item"><a href="problems.html">Index&nbsp;of&nbsp;Problems</a></div>
+<div class="menu-item"><a href="http://www.cs.ubc.ca/labs/scl/spot/">Spot&rsquo;s&nbsp;Guide</a></div>
+<div class="menu-category">Examples</div>
+<div class="menu-item"><a href="guide_circulant2.html">Building&nbsp;a&nbsp;Circulant&nbsp;Operator</a></div>
+<div class="menu-item"><a href="guide_containers2.html">Using&nbsp;Spot&nbsp;Containers</a></div>
+<div class="menu-item"><a href="guide_convolution2.html">Blurring&nbsp;and&nbsp;Deblurring&nbsp;an&nbsp;Image</a></div>
+<div class="menu-item"><a href="guide_sparserecovery2.html">Sparse&nbsp;Recovery</a></div>
+</td>
+</tr>
+</table>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-4736412-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

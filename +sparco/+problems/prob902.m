@@ -119,7 +119,7 @@ if opts.update || opts.show
  
   if opts.update
      P = ones(128,128,3);
-     P = thumbPlot(P,1:n,data.A(data.b,2),[0,0,1]);
+     P = thumbPlot(P,1:n,data.A'*data.b,[0,0,1]);
      P = (P(1:2:end,:,:) + P(2:2:end,:,:)) / 2;
      P = (P(:,1:2:end,:) + P(:,2:2:end,:)) / 2;
      thumbwrite(P, info.thumb, opts);

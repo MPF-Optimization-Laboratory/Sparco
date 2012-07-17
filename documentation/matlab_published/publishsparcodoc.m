@@ -13,7 +13,7 @@ fprintf('If you have created a new .m file  or changed an existing one\n');
 fprintf('in the matlab_published/mfiles directory, you should publish it.\n\n');
 
 % publish all the mfiles
-mfiles = dir(fullfile(path, 'mfiles_publish', '*.m'));
+mfiles = dir(fullfile(path, 'mfiles', '*.m'));
 options = struct('outputDir', fullfile(path, 'html'));
 for i = 1:numel(mfiles)
     reply = input(['Publish ', mfiles(i).name, '? (y/n)\n'], 's');
@@ -66,7 +66,7 @@ for k = 1:numel(htmlfiles)
         
         fprintf(FID2, ['# jemdoc: menu{MENU}{', finalfile, '}, notime\n']);
         fprintf(FID2, ['= ', pagetitle, '\n\n']);
-        fprintf(FID2, ['#includeraw{matlab_published/html/', name, '}']);
+        fprintf(FID2, ['#includeraw{matlab_published/html/', name, ' }']);
         fclose(FID2);
     end
 end

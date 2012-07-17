@@ -1,13 +1,13 @@
 Sparco
     Home                [index.html]
     License & Credits   [credits.html]
-    Contribute          [contribute.html]
+    Related Links       [links.html]
 
 Guides
-    A Quick Tutorial    [guide_quick2.html]
-    Index of Problems   [methods.html]
+    Generating problems [generate.html]
+    Problem structure   [guide_problem2.html]
+    Index of Problems   [problems.html]
     Spot's Guide        [http://www.cs.ubc.ca/labs/scl/spot/]
-#    User's Guide (pdf)  [spotmanual.pdf]
 
 Examples
     Building a Circulant Operator      [guide_circulant2.html]
