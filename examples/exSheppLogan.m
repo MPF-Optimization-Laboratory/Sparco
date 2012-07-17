@@ -7,21 +7,19 @@ function exSheppLogan(n)
 %   http://www.cs.ubc.ca/labs/scl/sparco
 %   $Id: exSheppLogan.m 603 2007-09-22 19:07:21Z mpf $
 
-import sparco.tools.*
-
 if nargin < 1, n  = 128; end
 
 figure(1); clf;
-[P1,x,y,z] = ellipsoids(n,[0,0,-0.25],[0,0,0]);
+[P1,x,y,z] = sparco.tools.ellipsoids(n,[0,0,-0.25],[0,0,0]);
 surf(x,y,z,P1), shading flat; hold on;
 
-[P2,x,y,z] = ellipsoids(n,[0,0,-0.25],[0,90,0]);
+[P2,x,y,z] = sparco.tools.ellipsoids(n,[0,0,-0.25],[0,90,0]);
 surf(x,y,z,P2), shading flat;
 
-[P3,x,y,z] = ellipsoids(n,[0,0,-0.25],[90,0,0]);
+[P3,x,y,z] = sparco.tools.ellipsoids(n,[0,0,-0.25],[90,0,0]);
 surf(x,y,z,P3), shading flat;
 
-[P4,x,y,z] = ellipsoids(n,[0.0,0.3,-0.25],[35,0,20]);
+[P4,x,y,z] = sparco.tools.ellipsoids(n,[0.0,0.3,-0.25],[35,0,20]);
 h = surf(x,y,z,P4); shading flat;
 set(h,'FaceAlpha',0.2);
 colormap gray; hold off;

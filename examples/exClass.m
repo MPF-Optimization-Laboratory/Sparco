@@ -2,9 +2,6 @@ function exClass
 % Example illustrating how classification problems with Sparco can be
 % solved with SPLG1
 
-import sparco.*
-import sparco.tools.*
-
 pathstr = fileparts(mfilename('fullpath'));
 pathstr = [pathstr filesep 'spgl1'];
 addpath(pathstr);
@@ -45,7 +42,7 @@ addpath(pathstr);
   end
   
   % Show a face from the real face set and the found set
-  [opts,varg] = parseDefaultOpts();
+  [opts,varg] = sparco.tools.parseDefaultOpts();
   
   figure;
   subplot(1,3,1);
