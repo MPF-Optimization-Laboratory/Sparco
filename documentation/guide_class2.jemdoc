@@ -1,0 +1,4 @@
+# jemdoc: menu{MENU}{guide_class2.html}, notime
+= Classification problems
+
+#includeraw{matlab_published/html/guide_class.html }

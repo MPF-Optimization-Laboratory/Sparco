@@ -10,7 +10,7 @@ Guides
     Spot's Guide        [http://www.cs.ubc.ca/labs/scl/spot/]
 
 Examples
-    Building a Circulant Operator      [guide_circulant2.html]
-    Using Spot Containers              [guide_containers2.html]
+    Solving a Sparco problem with GPSR      [guide_GPSR2.html]
+    Classification problems                 [guide_class2.html]
     Blurring and Deblurring an Image   [guide_convolution2.html]
     Sparse Recovery                    [guide_sparserecovery2.html]
