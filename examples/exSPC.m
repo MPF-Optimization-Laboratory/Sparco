@@ -25,7 +25,7 @@ opts = spgSetParms('optTol',1e-2,'bpTol',1e-2,'decTol',1e-3,'subspacemin',0);
 
 for i = 1:length(nobs);
     m = nobs(i);
-    P = prob602('m',m);
+    P = sparco.problems.prob602('m',m);
     A = P.A;
     b = P.b;
     
@@ -34,8 +34,8 @@ for i = 1:length(nobs);
        sdata = load(fname);
        x = sdata.x;
     else
-%       x = spgl1(A,b,[],0,[],opts);
-       x = as_topy(A,b);
+       x = spgl1(A,b,[],0,[],opts);
+       %x = as_topy(A,b);
        save(fname,'x');
     end
     
