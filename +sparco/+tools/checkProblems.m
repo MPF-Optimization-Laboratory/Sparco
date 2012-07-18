@@ -3,9 +3,7 @@ function checkProblems(list)
 %
 %   CHECKPROBLEMS(LIST) creates the default instances of all
 %   problems given in LIST. For each problem, operator A is checked
-%   by the DOTTEST program to detect mistakes.
-%
-%   See also DOTTEST.
+%   by the DOTTEST program in Spot to detect mistakes.
 
 %   Copyright 2008, Ewout van den Berg and Michael P. Friedlander
 %   http://www.cs.ubc.ca/labs/scl/sparco
