@@ -4,13 +4,12 @@ Sparco
     Related Links       [links.html]
 
 Guides
-    Generating problems [generate.html]
-    Problem structure   [guide_problem2.html]
+    Generating Problems [generate.html]
+    Problem Structure   [guide_problem2.html]
     Index of Problems   [problems.html]
-    Spot's Guide        [http://www.cs.ubc.ca/labs/scl/spot/]
+    Index of tools      [tools.html]
 
 Examples
-    Solving a Sparco problem with GPSR      [guide_GPSR2.html]
-    Classification problems                 [guide_class2.html]
-    Blurring and Deblurring an Image   [guide_convolution2.html]
-    Sparse Recovery                    [guide_sparserecovery2.html]
+    Solving a Sparco Problem with GPSR      [guide_GPSR2.html]
+    Classification Problems                 [guide_class2.html]
+    Total Variation Minimization            [guide_TV2.html]

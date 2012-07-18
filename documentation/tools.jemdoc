@@ -1,0 +1,38 @@
+# jemdoc: menu{MENU}{tools.html}, notime
+= Index of tools
+
+~~~
+{}{raw}
+<table id="toctable">
+<tr>
+<td>
+<ul id="toc">
+<li><a href="#sparcoBlur">sparcoBlur</a></li>
+<li><a href="#sparcoColumnRestrict">sparcoColumnRestrict</a></li>
+<li><a href="#RadialLines">RadialLines</a></li>
+<li><a href="#checkProblems">checkProblems</a></li>
+<li><a href="#ellipses">ellipses</a></li>
+</ul>
+</td><td>
+<ul id="toc">
+<li><a href="#ellipsoids">ellipsoids</a></li>
+<li><a href="#generateAngiogram">generateAngiogram</a></li>
+<li><a href="#getFigureExt">getFigureExt</a></li>
+<li><a href="#opDifference">opDifference</a></li>
+<li><a href="#parseDefaultOpts">parseDefaultOpts</a></li>
+
+</ul>
+</td><td>
+<ul id="toc">
+<li><a href="#randspvec">randspvec</a></li>
+<li><a href="#scaleImage">scaleImage</a></li>
+<li><a href="#scratchMask">scratchMask</a></li>
+<li><a href="#solveTV">solveTV</a></li>
+<li><a href="#sparsify">sparsify</a></li>
+</ul>
+</td>
+</tr>
+</table>
+~~~
+
+#includeraw{htmlhelp/tools_list.html}

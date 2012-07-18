@@ -1,0 +1,251 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>guide_TV</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-07-18"><meta name="DC.source" content="guide_TV.m">
+<link rel="stylesheet" type="text/css" href="../../style.css"/>
+</head><body><div class="content"><h1></h1><!--introduction--><p>In this example we will see an illustration of Total Variation minimization</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generating the problem</a></li><li><a href="#4">Solving the problem</a></li></ul></div><h2>Generating the problem<a name="1"></a></h2><p>We generate <a href="problems.html#prob502">problem 502</a> : the Artificial Angiogram</p><pre class="codeinput">  data = generateProblem(502);
+</pre><p>Then we create the total variation operator thanks to the Spot's wrapper <a href="tools.html#opDifference">opDifference</a></p><pre class="codeinput">  TV = sparco.tools.opDifference(data.signalSize)
+</pre><pre class="codeoutput">TV = 
+  Spot operator: Function(20000,10000)
+    rows:  20000    complex: no        
+    cols:  10000    type:    Function  
+</pre><p>We set up the parameters for the Total variation problem</p><p><img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_TV_eq50733.png" alt="$$&#xA;\mbox{min } \|MBx - b\|^2 + \gamma_{L_p} \|w_{L_p}x\|_p +&#xA;\gamma_{TV}\|w_{TV}TV(Bx)\|_q&#xA;$$"></p><p>with <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_TV_eq87919.png" alt="$\alpha$"> and <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_TV_eq42727.png" alt="$\beta$"> being use in the line search algorithm.</p><pre class="codeinput">  <span class="comment">% Set solver parameters</span>
+  opts.maxIts           = 10;       <span class="comment">% Maximum iterations</span>
+  opts.maxLSIts         = 150;      <span class="comment">% Maximum Line Search iterations</span>
+  opts.gradTol          = 1e-30;
+
+  opts.weightTV         = 0.001;
+  opts.weightLp         = 0.01;
+  opts.pNorm            = 1;
+  opts.qNorm            = 1;
+  opts.alpha            = 0.01;
+  opts.beta             = 0.6;
+  opts.mu               = 1e-12;
+</pre><h2>Solving the problem<a name="4"></a></h2><p>We will call the <a href="tools.html#solveTV">solveTV</a> solver function 7 times with a maximum of 10 iterations. We provide easily the necessary input thanks to the problem structure.</p><pre class="codeinput">figure;
+  x = randn(prod(data.signalSize),1);
+  <span class="keyword">for</span> i=1:7
+    x = sparco.tools.solveTV(data.M, data.B, TV, data.b, x, opts);
+    y = data.reconstruct(x);
+    subplot(2,4,i)
+    imagesc(abs(y));
+    title(sprintf(<span class="string">'Iteration %d'</span>,i));
+    axis <span class="string">square</span>;
+    drawnow;
+  <span class="keyword">end</span>
+</pre><pre class="codeoutput">  Iter      Objective          gNorm
+
+     0  3.6005689e+03  1.1886413e+02
+     1  2.4035681e+02  2.4630442e+01
+     2  1.4147324e+02  1.4658975e+01
+     3  8.6730634e+01  1.5172529e+00
+     4  8.5255417e+01  1.4380409e+00
+     5  8.2569380e+01  1.3965325e+00
+     6  7.8738131e+01  1.4439479e+00
+     7  7.3314456e+01  1.4300151e+00
+     8  6.6862459e+01  1.4481176e+00
+     9  5.9302747e+01  1.4236176e+00
+    10  5.1441864e+01  1.4503281e+00
+
+ ERROR EXIT -- Too many iterations
+
+  Iter      Objective          gNorm
+
+     0  5.1441864e+01  1.4503281e+00
+     1  5.0277496e+01  1.4937939e+00
+     2  4.7864922e+01  1.4781259e+00
+     3  4.4594587e+01  1.5772775e+00
+     4  4.0092132e+01  1.6059723e+00
+     5  3.4998947e+01  1.6884462e+00
+     6  2.9443618e+01  1.7601332e+00
+     7  2.4367778e+01  1.8466262e+00
+     8  2.1202667e+01  1.9814747e+00
+     9  2.0385834e+01  1.4030415e+00
+    10  2.0247872e+01  1.3188853e+00
+
+ ERROR EXIT -- Too many iterations
+
+  Iter      Objective          gNorm
+
+     0  2.0247872e+01  1.3188853e+00
+     1  1.9022292e+01  1.3738851e+00
+     2  1.6518012e+01  1.3020900e+00
+     3  1.3714303e+01  1.4651502e+00
+     4  1.0815980e+01  1.5308517e+00
+     5  1.0758948e+01  1.7827208e+00
+     6  1.0758948e+01  1.7827208e+00
+     7  1.0715996e+01  1.3443209e+00
+     8  1.0672416e+01  1.2038637e+00
+     9  1.0594950e+01  1.3324863e+00
+    10  1.0437409e+01  1.7458121e+00
+
+ ERROR EXIT -- Too many iterations
+
+  Iter      Objective          gNorm
+
+     0  1.0437409e+01  1.7458121e+00
+     1  9.5518860e+00  2.0770613e+00
+     2  7.8670143e+00  2.4403667e+00
+     3  6.7706098e+00  1.5003517e+00
+     4  6.5577108e+00  1.3594990e+00
+     5  6.2183155e+00  1.4206472e+00
+     6  5.9447114e+00  1.5820890e+00
+     7  5.7969529e+00  1.4500230e+00
+     8  5.7733528e+00  1.4447437e+00
+     9  5.7244579e+00  1.4773163e+00
+    10  5.6780706e+00  1.5772988e+00
+
+ ERROR EXIT -- Too many iterations
+
+  Iter      Objective          gNorm
+
+     0  5.6780706e+00  1.5772988e+00
+     1  5.6465675e+00  2.4730845e+00
+     2  5.6465675e+00  2.4730845e+00
+     3  5.3791058e+00  1.4184582e+00
+     4  5.2462084e+00  1.4012531e+00
+     5  5.1753562e+00  1.8169889e+00
+     6  5.1340560e+00  1.6987142e+00
+     7  5.0116702e+00  1.3403655e+00
+     8  4.9816173e+00  1.4140195e+00
+     9  4.9390029e+00  1.5961793e+00
+    10  4.8794428e+00  1.5702230e+00
+
+ ERROR EXIT -- Too many iterations
+
+  Iter      Objective          gNorm
+
+     0  4.8794428e+00  1.5702230e+00
+     1  4.8377084e+00  1.8535363e+00
+     2  4.8340483e+00  1.8473735e+00
+     3  4.8214281e+00  1.6175867e+00
+     4  4.7932356e+00  1.6232792e+00
+     5  4.5946021e+00  1.3973413e+00
+     6  4.5576490e+00  1.4877846e+00
+     7  4.5398661e+00  1.4858160e+00
+     8  4.5150465e+00  1.3899507e+00
+     9  4.4834639e+00  1.3405246e+00
+    10  4.4681141e+00  1.3710784e+00
+
+ ERROR EXIT -- Too many iterations
+
+  Iter      Objective          gNorm
+
+     0  4.4681141e+00  1.3710784e+00
+     1  4.4547610e+00  1.5280613e+00
+     2  4.4514836e+00  1.5059671e+00
+     3  4.3707364e+00  1.3403028e+00
+     4  4.3588621e+00  1.3742028e+00
+     5  4.3407813e+00  1.2737327e+00
+     6  4.3240230e+00  1.2892924e+00
+     7  4.3202339e+00  1.3194000e+00
+     8  4.3121104e+00  1.2855239e+00
+     9  4.2980376e+00  1.2193458e+00
+    10  4.2899592e+00  1.1955365e+00
+
+ ERROR EXIT -- Too many iterations
+
+</pre><img vspace="5" hspace="5" src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_TV_01.png" alt=""> <p>At the end of the 10 iterations we get the recovered signal from the Total Variation minimization problem. We plot the recovered signal, the original one and the difference between those two.</p><pre class="codeinput">  yreal = data.signal;
+
+  <span class="comment">% Plot original and recovered signal and difference</span>
+  figure;
+  subplot(1,3,1);
+    imagesc(real(y));
+    title(<span class="string">'Recovered signal'</span>);
+    axis <span class="string">square</span>;
+
+  subplot(1,3,2);
+    imagesc(real(yreal));
+    title(<span class="string">'Original signal'</span>);
+    axis <span class="string">square</span>;
+
+  subplot(1,3,3);
+    imagesc(real(y - yreal));
+    title(<span class="string">'Difference'</span>);
+    axis <span class="string">square</span>;
+</pre><img vspace="5" hspace="5" src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_TV_02.png" alt=""> <p class="footer"><br>
+      Published with MATLAB&reg; 7.14<br></p></div><!--
+##### SOURCE BEGIN #####
+%%
+% In this example we will see an illustration of Total Variation minimization
+
+%% Generating the problem
+% We generate <problems.html#prob502 problem 502> : the Artificial Angiogram
+  data = generateProblem(502);
+
+%%
+% Then we create the total variation operator thanks to the Spot's wrapper
+% <tools.html#opDifference opDifference>
+
+  TV = sparco.tools.opDifference(data.signalSize)
+
+%%
+% We set up the parameters for the Total variation problem
+%
+% $$
+% \mbox{min } \|MBx - b\|^2 + \gamma_{L_p} \|w_{L_p}x\|_p +
+% \gamma_{TV}\|w_{TV}TV(Bx)\|_q
+% $$
+%
+% with $\alpha$ and $\beta$ being use in the line search algorithm.
+
+  % Set solver parameters
+  opts.maxIts           = 10;       % Maximum iterations
+  opts.maxLSIts         = 150;      % Maximum Line Search iterations
+  opts.gradTol          = 1e-30;
+
+  opts.weightTV         = 0.001;
+  opts.weightLp         = 0.01;
+  opts.pNorm            = 1;
+  opts.qNorm            = 1;
+  opts.alpha            = 0.01;
+  opts.beta             = 0.6;
+  opts.mu               = 1e-12;
+
+%% Solving the problem
+% 
+% We will call the <tools.html#solveTV solveTV> solver function 7 times with
+% a maximum of 10 iterations. We provide easily the necessary input thanks
+% to the problem structure.
+  
+figure;
+  x = randn(prod(data.signalSize),1);
+  for i=1:7
+    x = sparco.tools.solveTV(data.M, data.B, TV, data.b, x, opts);
+    y = data.reconstruct(x);
+    subplot(2,4,i)
+    imagesc(abs(y));
+    title(sprintf('Iteration %d',i));
+    axis square;
+    drawnow;
+  end
+  
+%%
+% At the end of the 10 iterations we get the recovered signal from the
+% Total Variation minimization problem. We plot the recovered signal, the
+% original one and the difference between those two.
+
+  yreal = data.signal;
+  
+  % Plot original and recovered signal and difference
+  figure;
+  subplot(1,3,1);
+    imagesc(real(y));
+    title('Recovered signal');
+    axis square;
+    
+  subplot(1,3,2);
+    imagesc(real(yreal));
+    title('Original signal');
+    axis square;
+    
+  subplot(1,3,3);
+    imagesc(real(y - yreal));
+    title('Difference');
+    axis square;
+##### SOURCE END #####
+--></body></html>

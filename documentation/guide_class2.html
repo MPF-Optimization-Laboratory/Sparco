@@ -5,14 +5,14 @@
 <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <link rel="stylesheet" href="style.css" type="text/css" />
-<title>Classification problems</title>
+<title>Classification Problems</title>
 </head>
 <body>
 <table summary="Table for page layout." id="tlayout">
 <tr valign="top">
 <td id="layout-content">
 <div id="toptitle">
-<h1>Classification problems</h1>
+<h1>Classification Problems</h1>
 </div>
 
 <!DOCTYPE html
@@ -22,9 +22,9 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>guide_class</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-07-17"><meta name="DC.source" content="guide_class.m">
+      --><title>guide_class</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-07-18"><meta name="DC.source" content="guide_class.m">
 <link rel="stylesheet" type="text/css" href="../../style.css"/>
-</head><body><div class="content"><h1></h1><!--introduction--><p>In this example we will see the specificity of the classification problems (<a href="problems.html#prob801">801</a> and <a href="problems.html#prob802">802</a>) and solve one using <a href="http://www.cs.ubc.ca/labs/scl/spgl1">SPGL1</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generating the problem</a></li><li><a href="#3">Solving the problem</a></li></ul></div><h2>Generating the problem<a name="1"></a></h2><p>We generate the problem of the classification of corrupted images (<a href="problems.html#prob802">problem 802</a>) with the corruption ration <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq58344.png" alt="$\rho = 0.4$">, the doxn-sampling to <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq95382.png" alt="$m=800$"> coefficients (instead of 168*192=32256) and <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq04757.png" alt="$n=16$"> images from each of the 8 sets of the training data to form the dictionary.</p><pre class="codeinput">  P = generateProblem(<span class="string">'classcorr'</span>,<span class="string">'n'</span>,16,<span class="string">'m'</span>,1400,<span class="string">'rho'</span>,0.4);
+</head><body><div class="content"><h1></h1><!--introduction--><p>In this example we will see the specificity of the classification problems (<a href="problems.html#prob801">801</a> and <a href="problems.html#prob802">802</a>) and solve one using <a href="http://www.cs.ubc.ca/labs/scl/spgl1">SPGL1</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generating the problem</a></li><li><a href="#3">Solving the problem</a></li></ul></div><h2>Generating the problem<a name="1"></a></h2><p>We generate the problem of the classification of corrupted images (<a href="problems.html#prob802">problem 802</a>) with the corruption ration <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq58344.png" alt="$\rho = 0.4$">, the doxn-sampling to <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq38446.png" alt="$m=1400$"> coefficients (instead of 168*192=32256 pixels) and <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq04757.png" alt="$n=16$"> images from each of the 8 sets of the training data to form the dictionary.</p><pre class="codeinput">  P = generateProblem(<span class="string">'classcorr'</span>,<span class="string">'n'</span>,16,<span class="string">'m'</span>,1400,<span class="string">'rho'</span>,0.4);
 </pre><p>The Dictionary used is a concatenation of the dictionary formed by the training data and the identity matrix to take into account the error created by the corruption :</p><pre class="codeinput">B  = P.B            <span class="comment">% The full dictionary</span>
 B1 = B.children{1}  <span class="comment">% The dictionary from the training data</span>
 B2 = B.children{2}  <span class="comment">% The identity matrix</span>
@@ -78,12 +78,12 @@ B2 =
 
  EXIT -- Found a root
 
- Products with A     :      83        Total time   (secs) :     8.7
+ Products with A     :      83        Total time   (secs) :    10.1
  Products with A'    :      52        Project time (secs) :     1.3
- Newton iterations   :      20        Mat-vec time (secs) :     6.3
+ Newton iterations   :      20        Mat-vec time (secs) :     7.2
  Line search its     :      32        Subspace iterations :       0
 
-</pre><p>We now find out which set the solution is the closest to :</p><p><img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq23394.png" alt="$$ \mbox{class}(y) = \mbox{argmin}_i \|y - e^{*} - B[i]c^{*}[i]\|_2 $$"></p><p>with <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq28128.png" alt="$i$"> being the number of the set.</p><pre class="codeinput">  n = (P.B.n-32256) / 8; <span class="comment">% Number of images per set from the training data (there are 8 sets)</span>
+</pre><p>We now find out which set the solution is the closest to :</p><p><img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq23394.png" alt="$$ \mbox{class}(y) = \mbox{argmin}_i \|y - e^{*} - B[i]c^{*}[i]\|_2 $$"></p><p>with <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq28128.png" alt="$i$"> being the number of the set. Thus, we have to take out each set one-by-one along with the Dirac operator to compute the 2-norm.</p><pre class="codeinput">  n = (P.B.n-32256) / 8; <span class="comment">% Number of images per set from the training data (there are 8 sets)</span>
   A = P.A;
 
   <span class="keyword">for</span> i=1:8
@@ -100,7 +100,7 @@ B2 =
           <span class="keyword">end</span>
       <span class="keyword">end</span>
   <span class="keyword">end</span>
-</pre><p>Now that we have the recovered set, it is time to check if the result is good. The structure of the problem P gives us the real set our image is from using P.x0. Then we plot the image we wanted to classify, the first image of the recovered set and the first image from the real set.</p><pre class="codeinput">  [opts,varg] = sparco.tools.parseDefaultOpts(); <span class="comment">% To get the datapath</span>
+</pre><p>Now that we have the recovered set, it is time to check if the result is good. The structure of the problem P gives us the real set our image is from using P.x0. This is the main different thing between problems 80x (where P.x0 is just the original set) and the others (where P.x0 is the real sparse representation of the signal). Then we plot the image we wanted to classify, the first image of the recovered set and the first image from the real set.</p><pre class="codeinput">  [opts,varg] = sparco.tools.parseDefaultOpts(); <span class="comment">% To get the datapath</span>
 
   figure;
   subplot(1,3,1);
@@ -125,8 +125,8 @@ B2 =
 %% Generating the problem
 %
 % We generate the problem of the classification of corrupted images (<problems.html#prob802 problem 802>)
-% with the corruption ration $\rho = 0.4$, the doxn-sampling to $m=800$ 
-% coefficients (instead of 168*192=32256) and $n=16$ images from each of
+% with the corruption ration $\rho = 0.4$, the doxn-sampling to $m=1400$ 
+% coefficients (instead of 168*192=32256 pixels) and $n=16$ images from each of
 % the 8 sets of the training data to form the dictionary.
 
   P = generateProblem('classcorr','n',16,'m',1400,'rho',0.4);
@@ -157,7 +157,9 @@ B2 = B.children{2}  % The identity matrix
 %
 % $$ \mbox{class}(y) = \mbox{argmin}_i \|y - e^{*} - B[i]c^{*}[i]\|_2 $$
 %
-% with $i$ being the number of the set.
+% with $i$ being the number of the set. Thus, we have to take out each set
+% one-by-one along with the Dirac operator to compute the 2-norm.
+
   n = (P.B.n-32256) / 8; % Number of images per set from the training data (there are 8 sets)
   A = P.A;
   
@@ -179,8 +181,11 @@ B2 = B.children{2}  % The identity matrix
   %%
   % Now that we have the recovered set, it is time to check if the result
   % is good. The structure of the problem P gives us the real set our image
-  % is from using P.x0. Then we plot the image we wanted to classify, the
-  % first image of the recovered set and the first image from the real set.
+  % is from using P.x0. This is the main different thing between problems 80x
+  % (where P.x0 is just the original set) and the others (where P.x0 is
+  % the real sparse representation of the signal). Then we plot the image
+  % we wanted to classify, the first image of the recovered set and the
+  % first image from the real set. 
   
   [opts,varg] = sparco.tools.parseDefaultOpts(); % To get the datapath
   
@@ -199,9 +204,14 @@ B2 = B.children{2}  % The identity matrix
   
 ##### SOURCE END #####
 --></body></html>
+
+
+
+
+
 <div id="footer">
 <div id="footer-text">
-Page last updated on 2012-07-17
+Page last updated on 2012-07-18
 </div>
 </div>
 </td>
@@ -211,15 +221,14 @@ Page last updated on 2012-07-17
 <div class="menu-item"><a href="credits.html">License&nbsp;&amp;&nbsp;Credits</a></div>
 <div class="menu-item"><a href="links.html">Related&nbsp;Links</a></div>
 <div class="menu-category">Guides</div>
-<div class="menu-item"><a href="generate.html">Generating&nbsp;problems</a></div>
-<div class="menu-item"><a href="guide_problem2.html">Problem&nbsp;structure</a></div>
+<div class="menu-item"><a href="generate.html">Generating&nbsp;Problems</a></div>
+<div class="menu-item"><a href="guide_problem2.html">Problem&nbsp;Structure</a></div>
 <div class="menu-item"><a href="problems.html">Index&nbsp;of&nbsp;Problems</a></div>
-<div class="menu-item"><a href="http://www.cs.ubc.ca/labs/scl/spot/">Spot&rsquo;s&nbsp;Guide</a></div>
+<div class="menu-item"><a href="tools.html">Index&nbsp;of&nbsp;tools</a></div>
 <div class="menu-category">Examples</div>
-<div class="menu-item"><a href="guide_GPSR2.html">Solving&nbsp;a&nbsp;Sparco&nbsp;problem&nbsp;with&nbsp;GPSR</a></div>
-<div class="menu-item"><a href="guide_class2.html" class="current">Classification&nbsp;problems</a></div>
-<div class="menu-item"><a href="guide_convolution2.html">Blurring&nbsp;and&nbsp;Deblurring&nbsp;an&nbsp;Image</a></div>
-<div class="menu-item"><a href="guide_sparserecovery2.html">Sparse&nbsp;Recovery</a></div>
+<div class="menu-item"><a href="guide_GPSR2.html">Solving&nbsp;a&nbsp;Sparco&nbsp;Problem&nbsp;with&nbsp;GPSR</a></div>
+<div class="menu-item"><a href="guide_class2.html" class="current">Classification&nbsp;Problems</a></div>
+<div class="menu-item"><a href="guide_TV2.html">Total&nbsp;Variation&nbsp;Minimization</a></div>
 </td>
 </tr>
 </table>

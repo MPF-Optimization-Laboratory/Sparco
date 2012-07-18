@@ -20,6 +20,7 @@
            linktext = strcat('<html><a name="', name, '"></a>'); % Give each htmlhelp a link to use in the table of contents
            helptext = help2html(fullfile(sparco.path, '+sparco','+problems', name));
            text = strrep(helptext, '<html>', linktext);
+           % Give an image to illustrate the problem
            srcname = '<div class="title">';
            figname = sprintf('%s<img src="figProblem%s.png" alt="%s" style="border: solid 1px black"/>',srcname,name(end-2:end),name);
            text = strrep(text, srcname, figname);

@@ -1,4 +1,4 @@
 # jemdoc: menu{MENU}{guide_GPSR2.html}, notime
-= Solving a problem with GPSR
+= Solving a Sparco Problem with GPSR
 
 #includeraw{matlab_published/html/guide_GPSR.html }

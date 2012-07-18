@@ -6,8 +6,8 @@
 %% Generating the problem
 %
 % We generate the problem of the classification of corrupted images (<problems.html#prob802 problem 802>)
-% with the corruption ration $\rho = 0.4$, the doxn-sampling to $m=800$ 
-% coefficients (instead of 168*192=32256) and $n=16$ images from each of
+% with the corruption ration $\rho = 0.4$, the doxn-sampling to $m=1400$ 
+% coefficients (instead of 168*192=32256 pixels) and $n=16$ images from each of
 % the 8 sets of the training data to form the dictionary.
 
   P = generateProblem('classcorr','n',16,'m',1400,'rho',0.4);
@@ -38,7 +38,9 @@ B2 = B.children{2}  % The identity matrix
 %
 % $$ \mbox{class}(y) = \mbox{argmin}_i \|y - e^{*} - B[i]c^{*}[i]\|_2 $$
 %
-% with $i$ being the number of the set.
+% with $i$ being the number of the set. Thus, we have to take out each set
+% one-by-one along with the Dirac operator to compute the 2-norm.
+
   n = (P.B.n-32256) / 8; % Number of images per set from the training data (there are 8 sets)
   A = P.A;
   
@@ -60,8 +62,11 @@ B2 = B.children{2}  % The identity matrix
   %%
   % Now that we have the recovered set, it is time to check if the result
   % is good. The structure of the problem P gives us the real set our image
-  % is from using P.x0. Then we plot the image we wanted to classify, the
-  % first image of the recovered set and the first image from the real set.
+  % is from using P.x0. This is the main different thing between problems 80x
+  % (where P.x0 is just the original set) and the others (where P.x0 is
+  % the real sparse representation of the signal). Then we plot the image
+  % we wanted to classify, the first image of the recovered set and the
+  % first image from the real set. 
   
   [opts,varg] = sparco.tools.parseDefaultOpts(); % To get the datapath
   
