@@ -24,7 +24,7 @@ This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
       --><title>guide_class</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-07-17"><meta name="DC.source" content="guide_class.m">
 <link rel="stylesheet" type="text/css" href="../../style.css"/>
-</head><body><div class="content"><h1></h1><!--introduction--><p>In this example we will see the specificity of the classification problems (<a href="problems.html#prob801">801</a> and <a href="problems.html#prob802">802</a>) and solve one using <a href="http://www.cs.ubc.ca/labs/scl/spgl1">SPGL1</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generating the problem</a></li><li><a href="#3">Solving the problem</a></li></ul></div><h2>Generating the problem<a name="1"></a></h2><p>We generate the problem of the classification of corrupted images (<a href="problems.html#prob802">problem 802</a>) with the corruption ration <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq62796.png" alt="$\rho = 0.5$">, the doxn-sampling to <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq95382.png" alt="$m=800$"> coefficients (instead of 168*192=32256) and <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq04757.png" alt="$n=16$"> images from each of the 8 sets of the training data to form the dictionary.</p><pre class="codeinput">  P = generateProblem(<span class="string">'classcorr'</span>,<span class="string">'n'</span>,16,<span class="string">'m'</span>,800,<span class="string">'rho'</span>,0.5);
+</head><body><div class="content"><h1></h1><!--introduction--><p>In this example we will see the specificity of the classification problems (<a href="problems.html#prob801">801</a> and <a href="problems.html#prob802">802</a>) and solve one using <a href="http://www.cs.ubc.ca/labs/scl/spgl1">SPGL1</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Generating the problem</a></li><li><a href="#3">Solving the problem</a></li></ul></div><h2>Generating the problem<a name="1"></a></h2><p>We generate the problem of the classification of corrupted images (<a href="problems.html#prob802">problem 802</a>) with the corruption ration <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq58344.png" alt="$\rho = 0.4$">, the doxn-sampling to <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq95382.png" alt="$m=800$"> coefficients (instead of 168*192=32256) and <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq04757.png" alt="$n=16$"> images from each of the 8 sets of the training data to form the dictionary.</p><pre class="codeinput">  P = generateProblem(<span class="string">'classcorr'</span>,<span class="string">'n'</span>,16,<span class="string">'m'</span>,1400,<span class="string">'rho'</span>,0.4);
 </pre><p>The Dictionary used is a concatenation of the dictionary formed by the training data and the identity matrix to take into account the error created by the corruption :</p><pre class="codeinput">B  = P.B            <span class="comment">% The full dictionary</span>
 B1 = B.children{1}  <span class="comment">% The dictionary from the training data</span>
 B2 = B.children{2}  <span class="comment">% The identity matrix</span>
@@ -40,32 +40,67 @@ B2 =
   Spot operator: Dirac(32256,32256)
     rows:  32256    complex: no        
     cols:  32256    type:    Dirac     
-</pre><h2>Solving the problem<a name="3"></a></h2><p>We solve the complex L1 recovery problem : <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq59442.png" alt="$$ \mbox{min } ||z||_1 \mbox{s.t}  ||[B1 B2]z \left[\begin{array}{c}c \\ e\end{array}\right] - b||_2 <= \sigma$">$</p><pre class="codeinput">  spglopts = spgSetParms(<span class="string">'optTol'</span>,1e-4,<span class="string">'verbosity'</span>,0);
+</pre><h2>Solving the problem<a name="3"></a></h2><p>We solve the recovery problem using spgl1:</p><p><img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq00132.png" alt="$$ \mbox{min } \|c\|_1 + \|e\|_1 \mbox{  s.t  }  \|[B1 \mbox{ } B2] \left[\begin{array}{c}c&#xA;\\ e\end{array}\right] - b\|_2 \leq \sigma$$"></p><pre class="codeinput">  spglopts = spgSetParms(<span class="string">'optTol'</span>,1e-4,<span class="string">'verbosity'</span>,1);
   tau = 0;   <span class="comment">% Initial one-norm of solution</span>
-  sigma = 5; <span class="comment">% Go for a basis pursuit solution</span>
+  sigma = 9; <span class="comment">% Go for a basis pursuit solution</span>
   z = spgl1(P.A, P.b, tau, sigma, [], spglopts);
+</pre><pre class="codeoutput">
+ ================================================================================
+ SPGL1  v. 1017  (Mon, 16 Jun 2008)
+ ================================================================================
+ No. rows              :     1400      No. columns           :    32384
+ Initial tau           : 0.00e+00      Two-norm of b         : 1.60e+01
+ Optimality tol        : 1.00e-04      Target objective      : 9.00e+00
+ Basis pursuit tol     : 1.00e-06      Maximum iterations    :    14000
 
-<span class="comment">% Find out from which set the solution is the closest</span>
-  n       = (P.B.n-32256) / 8;
-  A       = P.A;
+  Iter      Objective   Relative Gap  Rel Error      gNorm   stepG    nnzX    nnzG            tau
+     0  1.5963963e+01  0.0000000e+00   4.36e-01  2.837e+02     0.0       0       0  3.9183902e-01
+     2  1.1506401e+01  2.0955153e-01   2.18e-01  1.344e+02     0.0      84       1  6.0646193e-01
+     4  9.8308073e+00  1.4140756e-01   8.45e-02  3.391e+01     0.0      43       1  8.4733405e-01
+     6  9.6329341e+00  2.4103327e-01   6.57e-02  3.760e+01    -0.3      93       1  1.0095063e+00
+     8  9.4511765e+00  2.3906748e-01   4.77e-02  1.395e+01     0.0      98       1  1.3150787e+00
+    10  9.3878745e+00  8.6826320e-01   4.13e-02  4.848e+01     0.0     105       1  1.3901884e+00
+    13  9.1261802e+00  1.4711120e-01   1.38e-02  6.863e+00     0.0     110       1  1.5579715e+00
+    15  9.1037161e+00  9.4593827e-01   1.14e-02  1.966e+01     0.0     107       1  1.6060054e+00
+    17  9.0577141e+00  1.2625424e-01   6.37e-03  4.626e+00     0.0     108       1  1.7190184e+00
+    20  9.0490564e+00  7.7548259e-01   5.42e-03  1.447e+01    -0.3     114       0  1.7496945e+00
+    22  9.0229362e+00  8.2587069e-02   2.54e-03  2.746e+00     0.0     113       1  1.8250592e+00
+    24  9.0198683e+00  4.8206602e-01   2.20e-03  1.572e+01     0.0     123       1  1.8364576e+00
+    27  8.9924535e+00  6.7833878e-02   8.39e-04  2.121e+00     0.0     120       1  1.8044637e+00
+    31  8.9891660e+00  7.1411017e-02   1.21e-03  2.407e+00     0.0     116       1  1.7640110e+00
+    33  8.9921959e+00  1.9166762e-01   8.68e-04  4.376e+00     0.0     111       1  1.7479736e+00
+    35  8.9918851e+00  6.6365432e-02   9.02e-04  2.639e+00     0.0     110       1  1.7203231e+00
+    39  8.9921663e+00  6.7562372e-02   8.71e-04  2.603e+00     0.0     108       1  1.6932618e+00
+    41  8.9941585e+00  9.5886078e-02   6.49e-04  3.104e+00     0.0     106       1  1.6763372e+00
+    43  8.9952666e+00  6.1016905e-02   5.26e-04  2.916e+00     0.0     102       1  1.6617368e+00
+    47  8.9942533e+00  6.3537039e-02   6.39e-04  2.775e+00     0.0      98       1  1.6431128e+00
+    50  9.0006054e+00  2.0529400e-01   6.73e-05  9.108e+00     0.0      95       1
+
+ EXIT -- Found a root
+
+ Products with A     :      83        Total time   (secs) :     8.7
+ Products with A'    :      52        Project time (secs) :     1.3
+ Newton iterations   :      20        Mat-vec time (secs) :     6.3
+ Line search its     :      32        Subspace iterations :       0
+
+</pre><p>We now find out which set the solution is the closest to :</p><p><img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq23394.png" alt="$$ \mbox{class}(y) = \mbox{argmin}_i \|y - e^{*} - B[i]c^{*}[i]\|_2 $$"></p><p>with <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_class_eq28128.png" alt="$i$"> being the number of the set.</p><pre class="codeinput">  n = (P.B.n-32256) / 8; <span class="comment">% Number of images per set from the training data (there are 8 sets)</span>
+  A = P.A;
 
   <span class="keyword">for</span> i=1:8
-      idx = ((i-1)*n+1):(i*n);
+      idx = [((i-1)*n+1):(i*n) (8*n+1):A.n];    <span class="comment">% Take out the indices of the c[i] and e</span>
       B   = A(:,idx);
-      c   = z(idx,:);
-      <span class="keyword">if</span> (i==1)
-          sol.min = norm(P.b-B*c,2);
+      y   = z(idx,:);
+      <span class="keyword">if</span> (i==1)                                 <span class="comment">% Initialize the min and arg</span>
+          sol.min = norm(P.b-B*y,2);
           sol.arg = 1;
       <span class="keyword">else</span>
-          <span class="keyword">if</span> norm(P.b-B*c,2) &lt; sol.min
-              sol.min = norm(P.b-B*c,2);
+          <span class="keyword">if</span> norm(P.b-B*y,2) &lt; sol.min
+              sol.min = norm(P.b-B*y,2);
               sol.arg = i;
           <span class="keyword">end</span>
       <span class="keyword">end</span>
   <span class="keyword">end</span>
-
-  <span class="comment">% Show a face from the real face set and the found set</span>
-  [opts,varg] = sparco.tools.parseDefaultOpts();
+</pre><p>Now that we have the recovered set, it is time to check if the result is good. The structure of the problem P gives us the real set our image is from using P.x0. Then we plot the image we wanted to classify, the first image of the recovered set and the first image from the real set.</p><pre class="codeinput">  [opts,varg] = sparco.tools.parseDefaultOpts(); <span class="comment">% To get the datapath</span>
 
   figure;
   subplot(1,3,1);
@@ -90,11 +125,11 @@ B2 =
 %% Generating the problem
 %
 % We generate the problem of the classification of corrupted images (<problems.html#prob802 problem 802>)
-% with the corruption ration $\rho = 0.5$, the doxn-sampling to $m=800$ 
+% with the corruption ration $\rho = 0.4$, the doxn-sampling to $m=800$ 
 % coefficients (instead of 168*192=32256) and $n=16$ images from each of
 % the 8 sets of the training data to form the dictionary.
 
-  P = generateProblem('classcorr','n',16,'m',800,'rho',0.5);
+  P = generateProblem('classcorr','n',16,'m',1400,'rho',0.4);
 
 %%
 % The Dictionary used is a concatenation of the dictionary formed by the
@@ -106,36 +141,48 @@ B1 = B.children{1}  % The dictionary from the training data
 B2 = B.children{2}  % The identity matrix
 
 %% Solving the problem
-% We solve the complex L1 recovery problem :
-% $$ \mbox{min } ||z||_1 \mbox{s.t}  ||[B1 B2]z \left[\begin{array}{c}c
-% \\ e\end{array}\right] - b||_2 <= \sigma$$
+% We solve the recovery problem using spgl1:
+%
+% $$ \mbox{min } \|c\|_1 + \|e\|_1 \mbox{  s.t  }  \|[B1 \mbox{ } B2] \left[\begin{array}{c}c
+% \\ e\end{array}\right] - b\|_2 \leq \sigma$$
+%
 
-  spglopts = spgSetParms('optTol',1e-4,'verbosity',0);
+  spglopts = spgSetParms('optTol',1e-4,'verbosity',1);
   tau = 0;   % Initial one-norm of solution
-  sigma = 5; % Go for a basis pursuit solution
+  sigma = 9; % Go for a basis pursuit solution
   z = spgl1(P.A, P.b, tau, sigma, [], spglopts);
-  
-% Find out from which set the solution is the closest
-  n       = (P.B.n-32256) / 8;
-  A       = P.A;
+
+%%  
+% We now find out which set the solution is the closest to : 
+%
+% $$ \mbox{class}(y) = \mbox{argmin}_i \|y - e^{*} - B[i]c^{*}[i]\|_2 $$
+%
+% with $i$ being the number of the set.
+  n = (P.B.n-32256) / 8; % Number of images per set from the training data (there are 8 sets)
+  A = P.A;
   
   for i=1:8
-      idx = ((i-1)*n+1):(i*n);
+      idx = [((i-1)*n+1):(i*n) (8*n+1):A.n];    % Take out the indices of the c[i] and e
       B   = A(:,idx);
-      c   = z(idx,:);
-      if (i==1)
-          sol.min = norm(P.b-B*c,2);
+      y   = z(idx,:);
+      if (i==1)                                 % Initialize the min and arg
+          sol.min = norm(P.b-B*y,2);
           sol.arg = 1;
       else
-          if norm(P.b-B*c,2) < sol.min
-              sol.min = norm(P.b-B*c,2);
+          if norm(P.b-B*y,2) < sol.min
+              sol.min = norm(P.b-B*y,2);
               sol.arg = i;
           end
       end
   end
   
-  % Show a face from the real face set and the found set
-  [opts,varg] = sparco.tools.parseDefaultOpts();
+  %%
+  % Now that we have the recovered set, it is time to check if the result
+  % is good. The structure of the problem P gives us the real set our image
+  % is from using P.x0. Then we plot the image we wanted to classify, the
+  % first image of the recovered set and the first image from the real set.
+  
+  [opts,varg] = sparco.tools.parseDefaultOpts(); % To get the datapath
   
   figure;
   subplot(1,3,1);
@@ -152,10 +199,6 @@ B2 = B.children{2}  % The identity matrix
   
 ##### SOURCE END #####
 --></body></html>
-
-
-
-
 <div id="footer">
 <div id="footer-text">
 Page last updated on 2012-07-17

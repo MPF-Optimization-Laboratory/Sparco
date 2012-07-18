@@ -47,7 +47,7 @@ b = P.b; % The right-hand side vector
 % linear operator.
 % Consider the least-squares problem
 % $$
-% \mbox{min } \frac{1}{2} ||Ax - b||_2^2
+% \mbox{min } \frac{1}{2} \|Ax - b\|_2^2
 % $$
 %  
 % The residual and objective gradient at x are given by

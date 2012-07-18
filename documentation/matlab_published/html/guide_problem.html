@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>guide_problem</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-07-16"><meta name="DC.source" content="guide_problem.m">
+      --><title>guide_problem</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-07-17"><meta name="DC.source" content="guide_problem.m">
 <link rel="stylesheet" type="text/css" href="../../style.css"/>
 </head><body><div class="content"><h1></h1><!--introduction--><p>A single data structure defines all aspects of a problem, and is designed to give flexible access to specific components.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">General structure</a></li><li><a href="#2">Code example</a></li><li><a href="#6">Using the operators</a></li></ul></div><h2>General structure<a name="1"></a></h2><p>For the sake of uniformity, there are a small numbre of fields that are guaranteed to exist in every problem structure. These include Spot operators <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq31461.png" alt="$A$">, <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq73617.png" alt="$B$"> and <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq53292.png" alt="$M$">, the data for the observed signal <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq28812.png" alt="$b$"> and the dimensions of the (perhaps unobserved) actual signal <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq72101.png" alt="$b_0 = Bx$">. Those all corresponds to the sparse resconstruction problem <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq74691.png" alt="$$ \displaystyle \overbrace{M*b_0}^{b} = \overbrace{M*B}^{A}*x $$"></p><h2>Code example<a name="2"></a></h2><pre>Create a new test problem using its name or its sparcoID. For example,
 to make the Piecewise cubic polynomial problem:</pre><pre class="codeinput">  P = generateProblem(6)
@@ -35,7 +35,7 @@ b = P.b; <span class="comment">% The right-hand side vector</span>
 </pre><img vspace="5" hspace="5" src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_01.png" alt=""> <p>The function handle P.reconstruct is an aid in reconstructing the signal from the coefficient vector x.</p><pre class="codeinput">  y = P.reconstruct(x);    <span class="comment">% Use x to reconstruct the signal.</span>
   <span class="comment">%yorig = P.signal;        % P.Signal is the original signal (here yorig = y because y = B*x0).</span>
   plot(y);
-</pre><img vspace="5" hspace="5" src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_02.png" alt=""> <h2>Using the operators<a name="6"></a></h2><p>Here's an example on how to use the function handles that describe the linear operator. Consider the least-squares problem <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq41075.png" alt="$$ \mbox{min } \frac{1}{2} ||Ax - b||_2^2 $$"></p><p>The residual and objective gradient at x are given by</p><pre class="codeinput">  r = b - A * x;
+</pre><img vspace="5" hspace="5" src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_02.png" alt=""> <h2>Using the operators<a name="6"></a></h2><p>Here's an example on how to use the function handles that describe the linear operator. Consider the least-squares problem <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq97230.png" alt="$$ \mbox{min } \frac{1}{2} \|Ax - b\|_2^2 $$"></p><p>The residual and objective gradient at x are given by</p><pre class="codeinput">  r = b - A * x;
   g =   - A'* r;
 </pre><p class="footer"><br>
       Published with MATLAB&reg; 7.14<br></p></div><!--
@@ -89,7 +89,7 @@ b = P.b; % The right-hand side vector
 % linear operator.
 % Consider the least-squares problem
 % $$
-% \mbox{min } \frac{1}{2} ||Ax - b||_2^2
+% \mbox{min } \frac{1}{2} \|Ax - b\|_2^2
 % $$
 %  
 % The residual and objective gradient at x are given by
@@ -98,13 +98,6 @@ b = P.b; % The right-hand side vector
   g =   - A'* r;
 ##### SOURCE END #####
 --></body></html>
-
-
-
-
-
-
-
 
 
 

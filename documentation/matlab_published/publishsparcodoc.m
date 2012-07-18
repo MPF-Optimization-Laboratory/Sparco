@@ -25,6 +25,7 @@ for i = 1:numel(mfiles)
 end
 
 htmlfiles = dir(fullfile(path, 'html', '*.html'));
+idx      = find(fullpath == filesep); % Reput it here because some mfiles change it.
 for k = 1:numel(htmlfiles)
     name = htmlfiles(k).name;
     % Convert the input file into a string

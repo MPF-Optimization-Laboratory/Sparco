@@ -16,7 +16,7 @@
 %% Solving the problem  
 % We solve the $L_1$ recovery problem :
 %
-% $$ \mbox{min } \frac{1}{2} ||Ax - b||_2^2 + \lambda ||x||_1 $$
+% $$ \mbox{min } \frac{1}{2} \|Ax - b\|_2^2 + \lambda \|x\|_1 $$
 %
 % with $\lambda = 1000$ to put a lot of weight on the sparsity of the
 % resulting vector $x_0$. 
