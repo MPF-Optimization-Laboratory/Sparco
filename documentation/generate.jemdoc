@@ -8,8 +8,8 @@
 <div><ul>
 <li><a href="#1">Syntax</a></li>
 <li><a href="#2">Problem's documentation</a></li>
-<li><a href="#3">Flags</a></li>
-<li><a href="#4">List of problems</a></li>
+<li><a href="#3">List of problems</a></li>
+<li><a href="#4">Flags</a></li>
 </ul></div>
 ~~~
 
@@ -43,6 +43,16 @@ a DCT-Dirac dictionnary. Two versions of this problem can be generated as follow
 #includeraw{sample_generate.html}
 ~~
 
+Sometimes it is more convenient to remember the problem name
+rather than its number. Therefore we can equivalently instantiate
+problem 5 by its name 'gcosspike'
+
+
+~~~
+{}{}
+P = generateProblem('gcosspike');
+~~~
+
 ~~~
 {}{raw}
 <a name="2"></a>
@@ -63,17 +73,6 @@ generateProblem(id, 'help');
 {}{raw}
 <a name="3"></a>
 ~~~
-== Flags
-
-Other commonly supported flags are +'show'+ for displaying example figures 
-associated with the problem and +'noseed'+ to suppress the initialization of the 
-random number generators.
-
-
-~~~
-{}{raw}
-<a name="4"></a>
-~~~
 == List of problems
 
 A full list of of all available problem identifiers in the collection can be 
@@ -84,8 +83,20 @@ retrieved via the command
 pList = generateProblem('list');
 ~~~
 
-This is useful, for example, when benchmarking an algorith on a series of test problems
-or for checking which problem identifiers are valid. The code fragment
+This list contains the problem numbers of all known problems.
+When documenting the results of a solver on a certain problem it
+is better to use the problem name rather than its number. One way
+to get the name is by instantiating the problem and looking at
+the +info.name+ field. Alternatively the name can be queried using
+the generateProblem function with the +getname+ flag.
+
+~~~
+{}{}
+name = generateProblem(5,'getname')
+name = 
+    gcosspike
+~~~
+name = generateProblem(5,'getname');
 
 ~~~
 {}{}
@@ -98,3 +109,13 @@ end
 
 prints the names of every problem in the collection. The field +info.title+
 is common to all problem structures.
+
+~~~
+{}{raw}
+<a name="4"></a>
+~~~
+== Flags
+
+Other commonly supported flags are +'show'+ for displaying example figures 
+associated with the problem and +'noseed'+ to suppress the initialization of the 
+random number generators.

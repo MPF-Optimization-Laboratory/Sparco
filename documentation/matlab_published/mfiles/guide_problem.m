@@ -3,15 +3,24 @@
 % to give flexible access to specific components.
 
 %% General structure
+% Each Sparco problem consists of an observation vector $b$ which is
+% formed by applying measurement matrix $M$ on a signal that has a
+% sparse representation in sparsity basis $B$:
+%  
+% $$b = M*y$$
+%  
+% or
+%  
+% $$b = MBx_0 = Ax_0$$
+%  
+% where $x_0$ is a sparse vector. By convention $A$ is defined as $MB$.
+% For some problems noise $r$ is added to the observation b to make
+% the scenario more realistic.
 % For the sake of
 % uniformity, there are a small numbre of fields that are guaranteed to
 % exist in every problem structure. These include Spot operators $A$, $B$ 
 % and $M$, the data for the observed signal $b$ and the dimensions of the
-% (perhaps unobserved) actual signal $b_0 = Bx$. Those all corresponds to
-% the sparse resconstruction problem 
-% $$
-% \displaystyle \overbrace{M*b_0}^{b} = \overbrace{M*B}^{A}*x 
-% $$
+% (perhaps unobserved) actual signal $b_0 = Bx$.
 %
 %% Code example
 %  Create a new test problem using its name or its sparcoID. For example,
@@ -25,7 +34,14 @@
 
 A = P.A  % The operator A = Gaussian * Daubechies
 b = P.b; % The right-hand side vector
-    
+
+%%
+% The 'info' field provides additional information about the problem.
+
+ID          = P.info.sparcoID
+name        = P.info.name
+description = P.info.title
+
 %%
 % Some (but not all) problems have the "correct" sparse coefficient
 % vector.  Generally, finding this sparse representation is the hard

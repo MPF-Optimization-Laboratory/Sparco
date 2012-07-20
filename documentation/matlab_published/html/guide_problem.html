@@ -6,13 +6,11 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>guide_problem</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-07-17"><meta name="DC.source" content="guide_problem.m">
+      --><title>guide_problem</title><meta name="generator" content="MATLAB 7.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2012-07-19"><meta name="DC.source" content="guide_problem.m">
 <link rel="stylesheet" type="text/css" href="../../style.css"/>
-</head><body><div class="content"><h1></h1><!--introduction--><p>A single data structure defines all aspects of a problem, and is designed to give flexible access to specific components.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">General structure</a></li><li><a href="#2">Code example</a></li><li><a href="#6">Using the operators</a></li></ul></div><h2>General structure<a name="1"></a></h2><p>For the sake of uniformity, there are a small numbre of fields that are guaranteed to exist in every problem structure. These include Spot operators <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq31461.png" alt="$A$">, <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq73617.png" alt="$B$"> and <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq53292.png" alt="$M$">, the data for the observed signal <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq28812.png" alt="$b$"> and the dimensions of the (perhaps unobserved) actual signal <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq72101.png" alt="$b_0 = Bx$">. Those all corresponds to the sparse resconstruction problem <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq74691.png" alt="$$ \displaystyle \overbrace{M*b_0}^{b} = \overbrace{M*B}^{A}*x $$"></p><h2>Code example<a name="2"></a></h2><pre>Create a new test problem using its name or its sparcoID. For example,
+</head><body><div class="content"><h1></h1><!--introduction--><p>A single data structure defines all aspects of a problem, and is designed to give flexible access to specific components.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">General structure</a></li><li><a href="#2">Code example</a></li><li><a href="#7">Using the operators</a></li></ul></div><h2>General structure<a name="1"></a></h2><p>Each Sparco problem consists of an observation vector <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq28812.png" alt="$b$"> which is formed by applying measurement matrix <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq53292.png" alt="$M$"> on a signal that has a sparse representation in sparsity basis <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq73617.png" alt="$B$">:</p><p><img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq48588.png" alt="$$b = M*y$$"></p><p>or</p><p><img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq21061.png" alt="$$b = MBx_0 = Ax_0$$"></p><p>where <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq69357.png" alt="$x_0$"> is a sparse vector. By convention <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq31461.png" alt="$A$"> is defined as <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq10084.png" alt="$MB$">. For some problems noise <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq25861.png" alt="$r$"> is added to the observation b to make the scenario more realistic. For the sake of uniformity, there are a small numbre of fields that are guaranteed to exist in every problem structure. These include Spot operators <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq31461.png" alt="$A$">, <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq73617.png" alt="$B$"> and <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq53292.png" alt="$M$">, the data for the observed signal <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq28812.png" alt="$b$"> and the dimensions of the (perhaps unobserved) actual signal <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq72101.png" alt="$b_0 = Bx$">.</p><h2>Code example<a name="2"></a></h2><pre>Create a new test problem using its name or its sparcoID. For example,
 to make the Piecewise cubic polynomial problem:</pre><pre class="codeinput">  P = generateProblem(6)
-</pre><pre class="codeoutput">
-P = 
-
+</pre><pre class="codeoutput">P = 
               A: [600x2048 opFoG]
               B: [2048x2048 opWavelet]
               M: [600x2048 opGaussian]
@@ -23,19 +21,27 @@ P =
      signalSize: [2048 1]
              x0: [2048x1 double]
            info: [1x1 struct]
-
 </pre><p>We have access to all the components of the problem using the structure above. A precise description of the operators is provided by Spot.</p><pre class="codeinput">A = P.A  <span class="comment">% The operator A = Gaussian * Daubechies</span>
 b = P.b; <span class="comment">% The right-hand side vector</span>
 </pre><pre class="codeoutput">A = 
   Spot operator: Gaussian(600,2048) * Wavelet(2048,2048)
     rows:    600    complex: no        
     cols:   2048    type:    FoG       
+</pre><p>The 'info' field provides additional information about the problem.</p><pre class="codeinput">ID          = P.info.sparcoID
+name        = P.info.name
+description = P.info.title
+</pre><pre class="codeoutput">ID =
+     6
+name =
+p3poly
+description =
+Piecewise cubic polynomial
 </pre><p>Some (but not all) problems have the "correct" sparse coefficient vector.  Generally, finding this sparse representation is the hard part!  Here is a plot of the coefficients.</p><pre class="codeinput">  x = P.x0;
   plot(x);
 </pre><img vspace="5" hspace="5" src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_01.png" alt=""> <p>The function handle P.reconstruct is an aid in reconstructing the signal from the coefficient vector x.</p><pre class="codeinput">  y = P.reconstruct(x);    <span class="comment">% Use x to reconstruct the signal.</span>
   <span class="comment">%yorig = P.signal;        % P.Signal is the original signal (here yorig = y because y = B*x0).</span>
   plot(y);
-</pre><img vspace="5" hspace="5" src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_02.png" alt=""> <h2>Using the operators<a name="6"></a></h2><p>Here's an example on how to use the function handles that describe the linear operator. Consider the least-squares problem <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq97230.png" alt="$$ \mbox{min } \frac{1}{2} \|Ax - b\|_2^2 $$"></p><p>The residual and objective gradient at x are given by</p><pre class="codeinput">  r = b - A * x;
+</pre><img vspace="5" hspace="5" src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_02.png" alt=""> <h2>Using the operators<a name="7"></a></h2><p>Here's an example on how to use the function handles that describe the linear operator. Consider the least-squares problem <img src="/ubc/cs/home/p/pasjean/Documents/MATLAB/Sparco/documentation/matlab_published/html/guide_problem_eq97230.png" alt="$$ \mbox{min } \frac{1}{2} \|Ax - b\|_2^2 $$"></p><p>The residual and objective gradient at x are given by</p><pre class="codeinput">  r = b - A * x;
   g =   - A'* r;
 </pre><p class="footer"><br>
       Published with MATLAB&reg; 7.14<br></p></div><!--
@@ -45,15 +51,24 @@ b = P.b; <span class="comment">% The right-hand side vector</span>
 % to give flexible access to specific components.
 
 %% General structure
+% Each Sparco problem consists of an observation vector $b$ which is
+% formed by applying measurement matrix $M$ on a signal that has a
+% sparse representation in sparsity basis $B$:
+%  
+% $$b = M*y$$
+%  
+% or
+%  
+% $$b = MBx_0 = Ax_0$$
+%  
+% where $x_0$ is a sparse vector. By convention $A$ is defined as $MB$.
+% For some problems noise $r$ is added to the observation b to make
+% the scenario more realistic.
 % For the sake of
 % uniformity, there are a small numbre of fields that are guaranteed to
 % exist in every problem structure. These include Spot operators $A$, $B$ 
 % and $M$, the data for the observed signal $b$ and the dimensions of the
-% (perhaps unobserved) actual signal $b_0 = Bx$. Those all corresponds to
-% the sparse resconstruction problem 
-% $$
-% \displaystyle \overbrace{M*b_0}^{b} = \overbrace{M*B}^{A}*x 
-% $$
+% (perhaps unobserved) actual signal $b_0 = Bx$.
 %
 %% Code example
 %  Create a new test problem using its name or its sparcoID. For example,
@@ -67,7 +82,14 @@ b = P.b; <span class="comment">% The right-hand side vector</span>
 
 A = P.A  % The operator A = Gaussian * Daubechies
 b = P.b; % The right-hand side vector
-    
+
+%%
+% The 'info' field provides additional information about the problem.
+
+ID          = P.info.sparcoID
+name        = P.info.name
+description = P.info.title
+
 %%
 % Some (but not all) problems have the "correct" sparse coefficient
 % vector.  Generally, finding this sparse representation is the hard
@@ -98,18 +120,3 @@ b = P.b; % The right-hand side vector
   g =   - A'* r;
 ##### SOURCE END #####
 --></body></html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
