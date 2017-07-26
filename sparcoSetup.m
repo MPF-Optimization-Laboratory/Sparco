@@ -55,7 +55,7 @@ catch err
         endofURL = strfind(website,'"');
         website = website(1:(endofURL-1));
 
-        if(isempty(strfind(website,'www'))&&isempty(strfind(website,'http')))
+        if(~contains(website,'www')&&~contains(website,'http'))
             website = strcat(spotwebsite,website);
         end
 
@@ -77,7 +77,7 @@ catch err
     list = dir(root);
 
     for i=1:length(list)
-        if(~isempty(strfind(list(i).name,'spotbox')))
+        if(~isempty(strfind(list(i).name,'spot-')))
             if(list(i).isdir)
                 if(strcmp(list(i).name,'spotbox')) %Rename folder if needed
                     break
